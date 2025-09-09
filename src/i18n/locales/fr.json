@@ -110,8 +110,18 @@
     "readMore": "Lire la suite",
     "role1": "Directeur Technique",
     "role2": "Chef de Projet",
+    "role3": "Data Scientist",
+    "role4": "Responsable Développement Durable",
+    "role5": "Architecte Systèmes",
+    "role6": "Directrice Innovation",
+    "role7": "Responsable R&D",
     "content1": "REPAE m'a permis de développer mon réseau professionnel et d'accéder à des opportunités exceptionnelles. La solidarité entre alumni est remarquable.",
-    "content2": "Grâce à REPAE, j'ai pu rencontrer des mentors qui ont guidé ma carrière. C'est bien plus qu'un réseau, c'est une famille professionnelle."
+    "content2": "Grâce à REPAE, j'ai pu rencontrer des mentors qui ont guidé ma carrière. C'est bien plus qu'un réseau, c'est une famille professionnelle.",
+    "content3": "Le réseau REPAE m'a ouvert des portes que je n'aurais jamais imaginées. La qualité des connexions et le soutien professionnel sont incomparables.",
+    "content4": "Grâce à REPAE, j'ai réussi ma transition vers les technologies durables. L'accompagnement et le soutien du réseau ont fait toute la différence.",
+    "content5": "Faire partie de REPAE, c'est appartenir à une communauté d'élite. Les opportunités de croissance professionnelle sont extraordinaires.",
+    "content6": "Le programme de mentorat REPAE a transformé ma trajectoire professionnelle. Le partage de connaissances entre alumni est inestimable.",
+    "content7": "Le réseau REPAE est mon plus grand atout professionnel. C'est une communauté qui incarne véritablement l'excellence et la solidarité."
   },
   "findAlumni": {
     "title": "Retrouver Nos Alumni",

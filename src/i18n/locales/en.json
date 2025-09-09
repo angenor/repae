@@ -110,8 +110,18 @@
     "readMore": "Read more",
     "role1": "Technical Director",
     "role2": "Project Manager",
+    "role3": "Data Scientist",
+    "role4": "Sustainability Manager",
+    "role5": "Systems Architect",
+    "role6": "Innovation Director",
+    "role7": "R&D Lead",
     "content1": "REPAE allowed me to develop my professional network and access exceptional opportunities. The solidarity between alumni is remarkable.",
-    "content2": "Thanks to REPAE, I was able to meet mentors who guided my career. It's much more than a network, it's a professional family."
+    "content2": "Thanks to REPAE, I was able to meet mentors who guided my career. It's much more than a network, it's a professional family.",
+    "content3": "The REPAE network opened doors I never imagined. The quality of connections and professional support is unmatched.",
+    "content4": "Through REPAE, I transitioned into sustainable tech. The alumni network's guidance and support made all the difference.",
+    "content5": "Being part of REPAE means belonging to an elite community. The professional growth opportunities are extraordinary.",
+    "content6": "REPAE's mentorship program transformed my career trajectory. The knowledge sharing among alumni is invaluable.",
+    "content7": "The REPAE network is my greatest professional asset. It's a community that truly embodies excellence and solidarity."
   },
   "findAlumni": {
     "title": "Find Our Alumni",
