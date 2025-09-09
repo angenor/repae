@@ -148,22 +148,55 @@ This is a Vue 3 application using the Composition API with the following stack:
 - **Primary Font**: **Montserrat** (all weights 100-900) - Balanced font bringing proximity and expertise
 - **Usage**: All user-facing text should use Montserrat via `font-montserrat` or `font-brand` classes
 
-### Brand Tailwind Classes
+### Custom Colors Configuration (Tailwind v4)
 
-#### Colors
+**IMPORTANT**: Custom colors are now configured using the `@theme` directive in `/src/assets/tailwind.css` following Tailwind v4 documentation:
+
 ```css
-/* Primary colors */
-bg-repae-blue, text-repae-blue, border-repae-blue
-bg-repae-gray, text-repae-gray, border-repae-gray
+@theme {
+  /* REPAE Blue - Couleur primaire #1488bb */
+  --color-repae-blue-50: #f0f9ff;
+  --color-repae-blue-100: #e0f2fe;
+  --color-repae-blue-200: #bae6fd;
+  --color-repae-blue-300: #7dd3fc;
+  --color-repae-blue-400: #38bdf8;
+  --color-repae-blue-500: #1488bb;
+  --color-repae-blue-600: #0284c7;
+  --color-repae-blue-700: #0369a1;
+  --color-repae-blue-800: #075985;
+  --color-repae-blue-900: #0c4a6e;
 
-/* Aliases */
-bg-repae-primary, text-repae-primary (= repae-blue)
-bg-repae-secondary, text-repae-secondary (= repae-gray)
-bg-brand-blue, text-brand-blue, bg-brand-gray, text-brand-gray
+  /* REPAE Gray - Couleur secondaire #717173 */
+  --color-repae-gray-50: #f9fafb;
+  --color-repae-gray-100: #f3f4f6;
+  --color-repae-gray-200: #e5e7eb;
+  --color-repae-gray-300: #d1d5db;
+  --color-repae-gray-400: #9ca3af;
+  --color-repae-gray-500: #717173;
+  --color-repae-gray-600: #4b5563;
+  --color-repae-gray-700: #374151;
+  --color-repae-gray-800: #1f2937;
+  --color-repae-gray-900: #111827;
 
-/* Color variations (50-900) */
-bg-repae-blue-50 (lightest) to bg-repae-blue-900 (darkest)
-bg-repae-gray-50 (lightest) to bg-repae-gray-900 (darkest)
+  /* Couleurs brand aliases */
+  --color-repae-primary: #1488bb;
+  --color-repae-secondary: #717173;
+  --color-brand-blue: #1488bb;
+  --color-brand-gray: #717173;
+}
+```
+
+#### Available Color Classes
+```css
+/* Brand colors with full shade variations */
+bg-repae-blue-{50-900}, text-repae-blue-{50-900}, border-repae-blue-{50-900}
+bg-repae-gray-{50-900}, text-repae-gray-{50-900}, border-repae-gray-{50-900}
+
+/* Brand aliases */
+bg-repae-primary, text-repae-primary, border-repae-primary
+bg-repae-secondary, text-repae-secondary, border-repae-secondary
+bg-brand-blue, text-brand-blue, border-brand-blue
+bg-brand-gray, text-brand-gray, border-brand-gray
 ```
 
 #### Typography
@@ -242,130 +275,94 @@ border-gray-300 dark:border-repae-dark-border
 - **USE ONLY** the specified colors (#1488bb, #717173) and their generated variations
 - **USE ONLY** Montserrat font family throughout the application
 
-### Example Usage
+### Example Usage (Updated for Tailwind v4)
 ```vue
 <template>
   <!-- Header with brand gradient -->
-  <header class="bg-gradient-to-r from-repae-blue to-repae-gray text-white p-8">
-    <h1 class="font-montserrat text-4xl font-bold">{{ $t('brand.title') }}</h1>
+  <header class="bg-gradient-to-r from-repae-blue-500 to-repae-gray-500 text-white p-8">
+    <h1 class="font-brand text-4xl font-bold">{{ $t('brand.title') }}</h1>
   </header>
   
   <!-- Primary button -->
-  <button class="bg-repae-blue hover:bg-repae-blue-600 text-white font-montserrat font-medium px-6 py-3 rounded-lg shadow-repae">
+  <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-6 py-3 rounded-lg shadow-lg">
     {{ $t('buttons.primary') }}
   </button>
   
-  <!-- Brand card -->
-  <div class="bg-white dark:bg-repae-gray-800 rounded-lg shadow-repae p-6 border-l-4 border-repae-blue">
-    <h3 class="font-montserrat text-lg font-semibold text-repae-gray dark:text-repae-gray-100">
+  <!-- Brand card with proper dark mode -->
+  <div class="bg-white dark:bg-repae-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-repae-blue-500 border border-gray-200 dark:border-repae-gray-600">
+    <h3 class="font-brand text-lg font-semibold text-repae-gray-900 dark:text-white">
       {{ $t('card.title') }}
     </h3>
+    <p class="font-brand text-repae-gray-600 dark:text-repae-gray-300">
+      {{ $t('card.description') }}
+    </p>
   </div>
 </template>
 ```
 
-### Dark Mode Implementation
-The application supports dark mode with brand-adapted colors:
-- Use `dark:` prefixes with brand colors for dark mode variants
-- Dark backgrounds use `repae-dark-bg` (#0f1419), `repae-dark-surface` (#1a1f26)
-- Dark text uses `repae-dark-text-primary` (#f7fafc), `repae-dark-text-secondary` (#cbd5e0)
-- Brand blue adapts to `repae-blue-dark` (#47a7c7) for better contrast in dark mode
-- **ALWAYS** use REPAE brand colors - never generic Tailwind colors for primary elements
+### Dark Mode Implementation (Standard Tailwind Approach)
 
-### Dark Mode Implementation - WORKING SOLUTION
-
-**IMPORTANT**: For dark mode to work correctly with REPAE colors, use inline styles with reactive ref instead of Tailwind classes:
+The application now uses standard Tailwind dark mode with proper `@theme` color definitions. Use the `useDarkMode()` composable from `/src/composables/useSimpleDarkMode.js`:
 
 #### Correct Dark Mode Implementation
 ```vue
 <script setup>
-import { ref } from 'vue'
+import { useDarkMode } from '@/composables/useSimpleDarkMode'
 
-// Use ref instead of computed for better reactivity
-const isDark = ref(false)
-
-// Initialize dark mode state on component mount
-if (typeof document !== 'undefined') {
-  isDark.value = document.documentElement.classList.contains('dark')
-}
-
-const toggleDarkMode = () => {
-  if (typeof document !== 'undefined') {
-    document.documentElement.classList.toggle('dark')
-    // CRITICAL: Update the reactive ref immediately
-    isDark.value = document.documentElement.classList.contains('dark')
-    
-    // Save preference
-    const theme = isDark.value ? 'dark' : 'light'
-    localStorage.setItem('repae-theme-simple', theme)
-  }
-}
+const { isDark, toggle } = useDarkMode()
+const toggleDarkMode = toggle
 </script>
 
 <template>
-  <!-- Use inline styles with REPAE brand colors for reliable dark mode -->
-  <div 
-    class="p-8 rounded-xl shadow-lg border-l-4 border"
-    :style="{ 
-      backgroundColor: isDark ? '#1a1f26' : '#ffffff',
-      borderLeftColor: '#1488bb',
-      borderColor: isDark ? '#2d3748' : '#e5e7eb',
-      color: isDark ? '#f7fafc' : '#717173'
-    }"
-  >
-    <h3 
-      class="text-xl font-semibold"
-      :style="{ 
-        color: isDark ? '#f7fafc' : '#717173',
-        fontFamily: 'Montserrat, sans-serif'
-      }"
-    >
+  <!-- Use standard Tailwind dark: classes with REPAE colors -->
+  <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-l-repae-blue-500 border border-gray-200 dark:border-repae-gray-600">
+    <h3 class="text-xl font-semibold text-repae-gray-900 dark:text-white font-brand">
       {{ $t('title') }}
     </h3>
     
-    <!-- Button with REPAE colors -->
+    <p class="text-repae-gray-600 dark:text-repae-gray-300 font-brand">
+      {{ $t('description') }}
+    </p>
+    
+    <!-- Button with proper dark mode colors -->
     <button 
-      class="text-white font-medium px-8 py-3 rounded-lg transition-colors"
-      :style="{ 
-        backgroundColor: isDark ? '#47a7c7' : '#1488bb',
-        fontFamily: 'Montserrat, sans-serif'
-      }"
+      @click="toggleDarkMode"
+      class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors"
     >
-      {{ $t('button') }}
+      <font-awesome-icon 
+        :icon="isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" 
+        class="mr-2" 
+      />
+      {{ isDark ? $t('home.lightMode') : $t('home.darkMode') }}
     </button>
   </div>
 </template>
 ```
 
-#### Why This Works
-1. **ref() instead of computed()**: More reliable reactivity for DOM-dependent state
-2. **Inline styles with :style**: Guaranteed to work with exact REPAE hex colors
-3. **Immediate ref update**: isDark.value updated immediately after DOM change
-4. **Exact color values**: Using precise hex codes from brand guidelines
+#### Standard Dark Mode Color Usage
+```css
+/* Backgrounds */
+bg-white dark:bg-repae-gray-800
+bg-gray-50 dark:bg-repae-gray-900
 
-#### REPAE Dark Mode Color Mapping
-```javascript
-// Light Mode → Dark Mode
-'#ffffff' → '#1a1f26'  // Background white → REPAE dark surface
-'#1488bb' → '#47a7c7'  // REPAE blue → lighter blue for contrast
-'#717173' → '#f7fafc'  // REPAE gray text → white text
-'#5a5a5c' → '#cbd5e0'  // Secondary text → light secondary
-'#e5e7eb' → '#2d3748'  // Light border → dark border
+/* Text colors */
+text-repae-gray-900 dark:text-white
+text-repae-gray-600 dark:text-repae-gray-300
+text-repae-gray-500 dark:text-repae-gray-400
+
+/* Buttons */
+bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300
+
+/* Borders */
+border-gray-200 dark:border-repae-gray-600
+border-repae-blue-500 dark:border-repae-blue-400
 ```
 
-#### Toggle Button Implementation
-```vue
-<button 
-  @click="toggleDarkMode"
-  class="text-white font-medium px-4 py-2 rounded-lg transition-colors"
-  style="background-color: #1488bb;"
->
-  <font-awesome-icon 
-    :icon="isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" 
-    class="mr-2" 
-  />
-  {{ isDark ? $t('home.lightMode') : $t('home.darkMode') }}
-</button>
-```
+#### Dark Mode Composable
+The `useDarkMode()` composable handles:
+- System preference detection
+- LocalStorage persistence (`theme` key)
+- Proper reactivity with Vue 3
+- DOM class management (`dark` class on `<html>`)
 
-**DO NOT** rely on Tailwind custom classes like `bg-repae-blue` for dark mode - use inline styles with exact hex values for guaranteed functionality.
+**ALWAYS** use the standard Tailwind `dark:` prefixes with REPAE brand colors for consistent dark mode implementation.
