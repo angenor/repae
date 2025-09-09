@@ -1,0 +1,2 @@
+implémete la page d'accueil de mon projet Repae en te basant sur la maquette @banck/captures/maquette-accueil.jpg , tu découpera la page en sections et tu utilises des composants réutilisables séparés (AppNavbar, AppHeader, AppFooter, Temoignages De Nos Alumni, Retrouver Nos Alumni, Nos Offres d'emploi, Evénements à vénir, En Collaboration avec). tu simules les données avec du mock data.
+Tu implémentera le dark/light et l'internationalisation (fr/en) avec i18n comme indiqué dans @CLAUDE.md

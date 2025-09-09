@@ -28,6 +28,7 @@ This is a Vue 3 application using the Composition API with the following stack:
 - **Pinia** for state management
 - **Vue-i18n v9** for internationalization (English/French)
 - **Tailwind CSS** with dark mode support
+- **Font Awesome** for icons (solid, regular, and brands collections)
 - **Vitest** for unit testing
 - **Playwright** for end-to-end testing
 
@@ -99,3 +100,38 @@ This is a Vue 3 application using the Composition API with the following stack:
   <input :placeholder="$t('forms.email')" />
 </template>
 ```
+
+## Icon Usage Guidelines
+
+**IMPORTANT**: Font Awesome is configured and ready to use throughout the application for all icon needs.
+
+### Font Awesome Integration
+- Font Awesome is globally configured in `src/main.js` with all icon collections (solid, regular, brands)
+- The `<font-awesome-icon>` component is registered globally and available in all templates
+- Use Font Awesome icons instead of inline SVGs or other icon solutions for consistency
+
+### Icon Usage Examples
+```vue
+<template>
+  <!-- Solid icons -->
+  <font-awesome-icon icon="fa-solid fa-heart" class="text-red-500" />
+  <font-awesome-icon icon="fa-solid fa-star" class="text-yellow-500" />
+  
+  <!-- Regular icons -->
+  <font-awesome-icon icon="fa-regular fa-thumbs-up" class="text-blue-500" />
+  
+  <!-- Brand icons -->
+  <font-awesome-icon icon="fa-brands fa-vue" class="text-green-500" />
+  
+  <!-- With Tailwind classes for styling -->
+  <font-awesome-icon 
+    icon="fa-solid fa-home" 
+    class="text-2xl hover:scale-110 transition-transform cursor-pointer"
+  />
+</template>
+```
+
+### Available Icon Collections
+- **fa-solid**: Solid style icons (most common)
+- **fa-regular**: Regular/outline style icons
+- **fa-brands**: Brand logos and social media icons
