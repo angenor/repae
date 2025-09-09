@@ -81,5 +81,163 @@
       "dark": "Dark", 
       "brand": "REPAE brand colors"
     }
-  }
+  },
+  "nav": {
+    "home": "Home",
+    "association": "Association",
+    "alumni": "Alumni",
+    "enterprises": "Enterprises",
+    "contact": "Contact",
+    "memberSpace": "Member Space"
+  },
+  "hero": {
+    "title": "We are the mark of excellence",
+    "subtitle": "Join the professional network of ESATIC alumni and transform your career",
+    "buttons": {
+      "discover": "Discover REPAE",
+      "join": "Join Us"
+    },
+    "stats": {
+      "members": "Active Members",
+      "insertionRate": "Insertion Rate",
+      "promotions": "Promotions",
+      "partnerships": "Partnerships"
+    }
+  },
+  "testimonials": {
+    "title": "Alumni Testimonials",
+    "subtitle": "Discover the inspiring journeys of our members",
+    "readMore": "Read more",
+    "role1": "Technical Director",
+    "role2": "Project Manager",
+    "content1": "REPAE allowed me to develop my professional network and access exceptional opportunities. The solidarity between alumni is remarkable.",
+    "content2": "Thanks to REPAE, I was able to meet mentors who guided my career. It's much more than a network, it's a professional family."
+  },
+  "findAlumni": {
+    "title": "Find Our Alumni",
+    "subtitle": "Connect with our members around the world",
+    "mapInfo": "150+ alumni in the region",
+    "searchTitle": "Search for Alumni",
+    "fields": {
+      "name": "Name",
+      "company": "Company",
+      "location": "Location",
+      "promotion": "Promotion"
+    },
+    "placeholders": {
+      "name": "Enter a name...",
+      "company": "Enter a company...",
+      "location": "Enter a city...",
+      "promotion": "Select a promotion"
+    },
+    "searchButton": "Search"
+  },
+  "jobOffers": {
+    "title": "Job Offers",
+    "subtitle": "Exclusive opportunities for REPAE members",
+    "applyButton": "Apply",
+    "viewAllButton": "View all offers",
+    "types": {
+      "cdi": "Permanent",
+      "cdd": "Fixed-term",
+      "alternance": "Apprenticeship",
+      "stage": "Internship"
+    },
+    "levels": {
+      "junior": "Junior",
+      "senior": "Senior",
+      "expert": "Expert"
+    },
+    "job1": {
+      "title": "DevOps Engineer",
+      "description": "Exciting mission in a dynamic team"
+    },
+    "job2": {
+      "title": "Senior DevOps Engineer",
+      "description": "Strategic position with important responsibilities"
+    },
+    "job3": {
+      "title": "Junior DevOps Engineer",
+      "description": "Excellent opportunity to start your career"
+    }
+  },
+  "events": {
+    "title": "Upcoming Events",
+    "subtitle": "Participate in our meetings and trainings",
+    "registerButton": "Register",
+    "viewAllButton": "View all events",
+    "participants": "participants",
+    "types": {
+      "conference": "Conference",
+      "networking": "Networking",
+      "workshop": "Workshop",
+      "formation": "Training",
+      "gala": "Gala"
+    },
+    "event1": {
+      "title": "AI & Innovation Conference",
+      "description": "Latest trends in artificial intelligence"
+    },
+    "event2": {
+      "title": "REPAE Networking Evening",
+      "description": "Meet alumni from your region"
+    },
+    "event3": {
+      "title": "Cloud Computing Workshop",
+      "description": "Hands-on training on cloud architectures"
+    },
+    "event4": {
+      "title": "Leadership Training",
+      "description": "Develop your managerial skills"
+    },
+    "event5": {
+      "title": "REPAE Annual Gala",
+      "description": "Celebration of excellence and awards ceremony"
+    }
+  },
+  "partnerships": {
+    "title": "In Collaboration With",
+    "subtitle": "Our strategic partners",
+    "visitWebsite": "Visit website",
+    "newsTitle": "News & Collaborations",
+    "readMore": "Read more",
+    "types": {
+      "education": "Education",
+      "enterprise": "Enterprise",
+      "network": "Network"
+    },
+    "partner1": {
+      "description": "Engineering school training the technological elite"
+    },
+    "partner2": {
+      "description": "Leader in innovative technological solutions"
+    },
+    "partner3": {
+      "description": "National network of engineering schools"
+    },
+    "news1": {
+      "title": "New strategic partnership",
+      "content": "REPAE signs major agreement for skills development"
+    },
+    "news2": {
+      "title": "Mentoring program launched",
+      "content": "Joint initiative to support recent graduates"
+    }
+  },
+  "footer": {
+    "description": "Professional Network of ESATIC Alumni - The mark of excellence",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "contact": "Contact",
+    "jobBoard": "Job Board",
+    "events": "Events",
+    "news": "News",
+    "documents": "Documents",
+    "allRightsReserved": "All rights reserved",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies"
+  },
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode"
 }

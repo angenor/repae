@@ -81,5 +81,163 @@
       "dark": "Sombre",
       "brand": "Couleurs charte REPAE"
     }
-  }
+  },
+  "nav": {
+    "home": "Accueil",
+    "association": "L'Association",
+    "alumni": "Alumni",
+    "enterprises": "Entreprises",
+    "contact": "Contact",
+    "memberSpace": "Espace Membre"
+  },
+  "hero": {
+    "title": "Nous sommes l'empreinte de l'excellence",
+    "subtitle": "Rejoignez le réseau professionnel des alumni de l'ESATIC et transformez votre carrière",
+    "buttons": {
+      "discover": "Découvrir REPAE",
+      "join": "Nous Rejoindre"
+    },
+    "stats": {
+      "members": "Membres actifs",
+      "insertionRate": "Taux d'insertion",
+      "promotions": "Promotions",
+      "partnerships": "Partenariats"
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages De Nos Alumni",
+    "subtitle": "Découvrez les parcours inspirants de nos membres",
+    "readMore": "Lire la suite",
+    "role1": "Directeur Technique",
+    "role2": "Chef de Projet",
+    "content1": "REPAE m'a permis de développer mon réseau professionnel et d'accéder à des opportunités exceptionnelles. La solidarité entre alumni est remarquable.",
+    "content2": "Grâce à REPAE, j'ai pu rencontrer des mentors qui ont guidé ma carrière. C'est bien plus qu'un réseau, c'est une famille professionnelle."
+  },
+  "findAlumni": {
+    "title": "Retrouver Nos Alumni",
+    "subtitle": "Connectez-vous avec nos membres à travers le monde",
+    "mapInfo": "150+ alumni dans la région",
+    "searchTitle": "Rechercher un Alumni",
+    "fields": {
+      "name": "Nom",
+      "company": "Entreprise",
+      "location": "Localisation",
+      "promotion": "Promotion"
+    },
+    "placeholders": {
+      "name": "Entrez un nom...",
+      "company": "Entrez une entreprise...",
+      "location": "Entrez une ville...",
+      "promotion": "Sélectionnez une promotion"
+    },
+    "searchButton": "Rechercher"
+  },
+  "jobOffers": {
+    "title": "Nos Offres d'emploi",
+    "subtitle": "Opportunités exclusives pour les membres REPAE",
+    "applyButton": "Postuler",
+    "viewAllButton": "Voir toutes les offres",
+    "types": {
+      "cdi": "CDI",
+      "cdd": "CDD",
+      "alternance": "Alternance",
+      "stage": "Stage"
+    },
+    "levels": {
+      "junior": "Junior",
+      "senior": "Senior",
+      "expert": "Expert"
+    },
+    "job1": {
+      "title": "Ingénieur DevOps",
+      "description": "Mission passionnante dans une équipe dynamique"
+    },
+    "job2": {
+      "title": "Ingénieur DevOps Senior",
+      "description": "Poste stratégique avec responsabilités importantes"
+    },
+    "job3": {
+      "title": "Ingénieur DevOps Junior",
+      "description": "Excellente opportunité pour débuter votre carrière"
+    }
+  },
+  "events": {
+    "title": "Événements à venir",
+    "subtitle": "Participez à nos rencontres et formations",
+    "registerButton": "S'inscrire",
+    "viewAllButton": "Voir tous les événements",
+    "participants": "participants",
+    "types": {
+      "conference": "Conférence",
+      "networking": "Networking",
+      "workshop": "Atelier",
+      "formation": "Formation",
+      "gala": "Gala"
+    },
+    "event1": {
+      "title": "Conférence IA & Innovation",
+      "description": "Les dernières tendances en intelligence artificielle"
+    },
+    "event2": {
+      "title": "Soirée Networking REPAE",
+      "description": "Rencontrez les alumni de votre région"
+    },
+    "event3": {
+      "title": "Workshop Cloud Computing",
+      "description": "Formation pratique sur les architectures cloud"
+    },
+    "event4": {
+      "title": "Formation Leadership",
+      "description": "Développez vos compétences managériales"
+    },
+    "event5": {
+      "title": "Gala Annuel REPAE",
+      "description": "Célébration de l'excellence et remise des prix"
+    }
+  },
+  "partnerships": {
+    "title": "En Collaboration avec",
+    "subtitle": "Nos partenaires stratégiques",
+    "visitWebsite": "Visiter le site",
+    "newsTitle": "Actualités & Collaborations",
+    "readMore": "Lire plus",
+    "types": {
+      "education": "Éducation",
+      "enterprise": "Entreprise",
+      "network": "Réseau"
+    },
+    "partner1": {
+      "description": "École d'ingénieurs formant l'élite technologique"
+    },
+    "partner2": {
+      "description": "Leader dans les solutions technologiques innovantes"
+    },
+    "partner3": {
+      "description": "Réseau national d'écoles d'ingénieurs"
+    },
+    "news1": {
+      "title": "Nouveau partenariat stratégique",
+      "content": "REPAE signe un accord majeur pour le développement des compétences"
+    },
+    "news2": {
+      "title": "Programme de mentorat lancé",
+      "content": "Initiative conjointe pour accompagner les jeunes diplômés"
+    }
+  },
+  "footer": {
+    "description": "Réseau Professionnel des Alumni de l'ESATIC - L'empreinte de l'excellence",
+    "quickLinks": "Liens Rapides",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "jobBoard": "Offres d'emploi",
+    "events": "Événements",
+    "news": "Actualités",
+    "documents": "Documents",
+    "allRightsReserved": "Tous droits réservés",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "cookies": "Cookies"
+  },
+  "lightMode": "Mode Clair",
+  "darkMode": "Mode Sombre"
 }
