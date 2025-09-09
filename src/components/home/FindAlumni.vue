@@ -17,7 +17,7 @@ const handleSearch = () => {
   <section class="py-16 bg-white dark:bg-repae-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-repae-gray-900 dark:text-white font-brand mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-repae-blue-500 dark:text-white font-brand mb-4">
           {{ $t('findAlumni.title') }}
         </h2>
         <p class="text-lg text-repae-gray-600 dark:text-repae-gray-300 font-brand">

@@ -197,14 +197,6 @@ onUnmounted(() => {
                       <p class="text-xs text-repae-gray-500 dark:text-repae-gray-500 font-brand truncate">
                         {{ testimonial.company }}
                       </p>
-                      <div class="flex items-center mt-1">
-                        <font-awesome-icon 
-                          v-for="star in 5" 
-                          :key="star"
-                          icon="fa-solid fa-star" 
-                          class="text-yellow-500 text-xs mr-0.5" 
-                        />
-                      </div>
                     </div>
                   </div>
                   
