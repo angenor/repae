@@ -6,7 +6,36 @@
         <div class="flex justify-between items-center h-16">
           <!-- Logo REPAE -->
           <div class="flex items-center">
-            <div class="text-2xl font-bold" style="color: #1488bb;">REPAE</div>
+            <!-- Logo mode clair -->
+            <img 
+              v-if="!isDark && !logoError"
+              src="/image/logos_REAPE/LOGO/LOGO%20RePAE3.png" 
+              alt="Logo REPAE - Réseau Professionnel des Alumni de l'ESATIC"
+              class="object-contain"
+              style="height: auto; width: 180px; min-width: 150px; max-height: 50px;"
+              @error="onImageError"
+            />
+            <!-- Logo mode sombre (version blanche) -->
+            <img 
+              v-else-if="isDark && !logoError"
+              src="/image/logos_REAPE/DECLINAISON/logo_BBL.png" 
+              alt="Logo REPAE - Réseau Professionnel des Alumni de l'ESATIC"
+              class="object-contain"
+              style="height: auto; width: 180px; min-width: 150px; max-height: 50px;"
+              @error="onImageError"
+            />
+            
+            <!-- Fallback texte si logo ne charge pas -->
+            <div 
+              v-if="logoError" 
+              class="text-2xl font-bold"
+              :style="{ 
+                color: '#1488bb',
+                fontFamily: 'Montserrat, sans-serif'
+              }"
+            >
+              REPAE
+            </div>
           </div>
           
           <!-- Toggle dark mode - Style inline pour assurer la visibilité -->
@@ -267,6 +296,7 @@ useI18n() // Pour les traductions dans le template
 
 // Gestion du dark mode avec ref réactive
 const isDark = ref(false)
+const logoError = ref(false)
 
 // Vérification initiale du mode sombre
 if (typeof document !== 'undefined') {
@@ -282,5 +312,9 @@ const toggleDarkMode = () => {
     const theme = isDark.value ? 'dark' : 'light'
     localStorage.setItem('repae-theme-simple', theme)
   }
+}
+
+const onImageError = () => {
+  logoError.value = true
 }
 </script>
