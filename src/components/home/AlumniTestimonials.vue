@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const testimonials = ref([
   {
@@ -71,12 +71,38 @@ const currentIndex = ref(0)
 const isPaused = ref(false)
 let autoScrollInterval = null
 
+// Nombre de témoignages par vue (responsive)
+const testimonialsPerView = computed(() => {
+  if (typeof window === 'undefined') return 3
+  const width = window.innerWidth
+  if (width >= 1024) return 3 // Desktop: 3 témoignages
+  if (width >= 768) return 2   // Tablet: 2 témoignages
+  return 1                     // Mobile: 1 témoignage
+})
+
+// Nombre total de "pages" de témoignages
+const totalPages = computed(() => {
+  return Math.ceil(testimonials.value.length / testimonialsPerView.value)
+})
+
+// Témoignages visibles pour la page actuelle
+const visibleTestimonials = computed(() => {
+  const start = currentIndex.value * testimonialsPerView.value
+  return testimonials.value.slice(start, start + testimonialsPerView.value)
+})
+
+// Fonction pour obtenir les témoignages d'une page spécifique
+const getTestimonialsForPage = (pageIndex) => {
+  const start = pageIndex * testimonialsPerView.value
+  return testimonials.value.slice(start, start + testimonialsPerView.value)
+}
+
 const startAutoScroll = () => {
   autoScrollInterval = setInterval(() => {
     if (!isPaused.value) {
       nextTestimonial()
     }
-  }, 4000) // Change testimonial every 4 seconds
+  }, 5000) // Change testimonials every 5 seconds
 }
 
 const stopAutoScroll = () => {
@@ -86,11 +112,11 @@ const stopAutoScroll = () => {
 }
 
 const previousTestimonial = () => {
-  currentIndex.value = currentIndex.value > 0 ? currentIndex.value - 1 : testimonials.value.length - 1
+  currentIndex.value = currentIndex.value > 0 ? currentIndex.value - 1 : totalPages.value - 1
 }
 
 const nextTestimonial = () => {
-  currentIndex.value = (currentIndex.value + 1) % testimonials.value.length
+  currentIndex.value = (currentIndex.value + 1) % totalPages.value
 }
 
 const goToTestimonial = (index) => {
@@ -107,6 +133,16 @@ const handleMouseLeave = () => {
 
 onMounted(() => {
   startAutoScroll()
+  
+  // Réinitialiser lors du redimensionnement
+  const handleResize = () => {
+    currentIndex.value = 0
+  }
+  window.addEventListener('resize', handleResize)
+  
+  return () => {
+    window.removeEventListener('resize', handleResize)
+  }
 })
 
 onUnmounted(() => {
@@ -115,8 +151,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="pb-16 pt-32 bg-gray-50 dark:bg-repae-gray-900 ">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="pb-16 pt-32 bg-gray-50 dark:bg-repae-gray-900">
+    <div class="mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-repae-blue-500 dark:text-white font-brand mb-4">
           {{ $t('testimonials.title') }}
@@ -127,67 +163,88 @@ onUnmounted(() => {
       </div>
 
       <div class="relative overflow-hidden" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-        <div class="flex transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+        <!-- Slider avec groupes de témoignages -->
+        <div 
+          class="flex transition-transform duration-700 ease-in-out" 
+          :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
+        >
+          <!-- Chaque "slide" contient un groupe de témoignages -->
           <div 
-            v-for="testimonial in testimonials" 
-            :key="testimonial.id"
+            v-for="pageIndex in totalPages" 
+            :key="pageIndex"
             class="w-full flex-shrink-0 px-4"
           >
-            <div class="bg-white dark:bg-repae-gray-800 rounded-xl shadow-lg p-8 border-l-4 border-l-repae-blue-500 max-w-2xl mx-auto">
-              <div class="flex items-start mb-6">
-                <img 
-                  :src="testimonial.image" 
-                  :alt="testimonial.name"
-                  class="w-16 h-16 rounded-full mr-4"
-                >
-                <div class="flex-1">
-                  <h3 class="font-bold text-repae-gray-900 dark:text-white font-brand">
-                    {{ testimonial.name }}
-                  </h3>
-                  <p class="text-sm text-repae-gray-600 dark:text-repae-gray-400 font-brand">
-                    {{ $t(testimonial.role) }} - {{ testimonial.company }}
-                  </p>
-                  <div class="flex items-center mt-2">
-                    <font-awesome-icon 
-                      v-for="star in 5" 
-                      :key="star"
-                      icon="fa-solid fa-star" 
-                      class="text-yellow-500 text-sm mr-1" 
-                    />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div 
+                v-for="testimonial in getTestimonialsForPage(pageIndex - 1)" 
+                :key="testimonial.id"
+                class="transform transition-all duration-300 hover:scale-105"
+              >
+                <div class="bg-white dark:bg-repae-gray-800 rounded-xl shadow-lg p-6 border-l-4 border-l-repae-blue-500 h-full flex flex-col">
+                  <div class="flex items-start mb-4">
+                    <img 
+                      :src="testimonial.image" 
+                      :alt="testimonial.name"
+                      class="w-14 h-14 rounded-full mr-4 flex-shrink-0"
+                    >
+                    <div class="flex-1 min-w-0">
+                      <h3 class="font-bold text-repae-gray-900 dark:text-white font-brand text-sm">
+                        {{ testimonial.name }}
+                      </h3>
+                      <p class="text-xs text-repae-gray-600 dark:text-repae-gray-400 font-brand truncate">
+                        {{ $t(testimonial.role) }}
+                      </p>
+                      <p class="text-xs text-repae-gray-500 dark:text-repae-gray-500 font-brand truncate">
+                        {{ testimonial.company }}
+                      </p>
+                      <div class="flex items-center mt-1">
+                        <font-awesome-icon 
+                          v-for="star in 5" 
+                          :key="star"
+                          icon="fa-solid fa-star" 
+                          class="text-yellow-500 text-xs mr-0.5" 
+                        />
+                      </div>
+                    </div>
                   </div>
+                  
+                  <p class="text-repae-gray-600 dark:text-repae-gray-300 font-brand italic text-sm flex-1 mb-4 leading-relaxed">
+                    "{{ $t(testimonial.content) }}"
+                  </p>
+                  
+                  <button class="text-repae-blue-500 hover:text-repae-blue-600 dark:text-repae-blue-400 dark:hover:text-repae-blue-300 font-brand font-medium text-sm self-start">
+                    {{ $t('testimonials.readMore') }} →
+                  </button>
                 </div>
               </div>
-              
-              <p class="text-repae-gray-600 dark:text-repae-gray-300 font-brand italic mb-4">
-                "{{ $t(testimonial.content) }}"
-              </p>
-              
-              <button class="text-repae-blue-500 hover:text-repae-blue-600 dark:text-repae-blue-400 dark:hover:text-repae-blue-300 font-brand font-medium">
-                {{ $t('testimonials.readMore') }} →
-              </button>
             </div>
           </div>
         </div>
 
-        <div class="flex justify-center mt-8 space-x-2">
+        <!-- Navigation uniquement si plus d'une page -->
+        <div v-if="totalPages > 1" class="flex justify-center items-center mt-12 space-x-4">
           <button 
             @click="previousTestimonial"
-            class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-repae-gray-700 transition-colors"
+            class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-repae-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            :disabled="currentIndex === 0"
           >
             <font-awesome-icon icon="fa-solid fa-chevron-left" class="text-repae-gray-600 dark:text-repae-gray-400" />
           </button>
           
-          <button 
-            v-for="(_, index) in testimonials.length" 
-            :key="index"
-            @click="goToTestimonial(index)"
-            class="w-2 h-2 rounded-full transition-all duration-300"
-            :class="currentIndex === index ? 'bg-repae-blue-500 w-8' : 'bg-gray-300 dark:bg-repae-gray-600'"
-          ></button>
+          <div class="flex space-x-2">
+            <button 
+              v-for="(_, index) in totalPages" 
+              :key="index"
+              @click="goToTestimonial(index)"
+              class="w-3 h-3 rounded-full transition-all duration-300"
+              :class="currentIndex === index ? 'bg-repae-blue-500 w-8' : 'bg-gray-300 dark:bg-repae-gray-600 hover:bg-gray-400 dark:hover:bg-repae-gray-500'"
+            ></button>
+          </div>
           
           <button 
             @click="nextTestimonial"
-            class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-repae-gray-700 transition-colors"
+            class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-repae-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            :disabled="currentIndex === totalPages - 1"
           >
             <font-awesome-icon icon="fa-solid fa-chevron-right" class="text-repae-gray-600 dark:text-repae-gray-400" />
           </button>
