@@ -46,8 +46,8 @@ This is a Vue 3 application using the Composition API with the following stack:
 - `src/components/__tests__/` - Unit tests for components
 
 ### Key Features
-- **Dark Mode**: Implemented via `useSimpleDarkMode` composable with class-based Tailwind dark mode
-- **Theme Persistence**: Dark mode preference saved to localStorage with key `repae-theme-simple`
+- **Dark Mode**: Implemented via `useDarkMode` composable with standard Tailwind v4 dark mode
+- **Theme Persistence**: Dark mode preference saved to localStorage with key `theme`
 - **System Theme Detection**: Falls back to system preference when no saved preference exists
 - **Route-level Code Splitting**: About page is lazy-loaded
 - **Internationalization (i18n)**: Vue-i18n v9 with English/French translations, auto-detection of browser language, and localStorage persistence

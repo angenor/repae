@@ -24,7 +24,7 @@
             />
             
             <!-- Fallback texte si logo ne charge pas -->
-            <div v-if="logoError" class="text-2xl font-bold text-repae-blue font-brand">
+            <div v-if="logoError" class="text-2xl font-bold text-repae-blue-500 font-brand">
               REPAE
             </div>
           </div>
@@ -32,7 +32,7 @@
           <!-- Toggle dark mode -->
           <button 
             @click="toggleDarkMode"
-            class="bg-repae-blue hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-medium px-4 py-2 rounded-lg transition-colors font-brand"
+            class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-medium px-4 py-2 rounded-lg transition-colors font-brand"
           >
             <font-awesome-icon 
               :icon="isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" 
@@ -55,7 +55,7 @@
           <p class="font-brand text-xl opacity-90 mb-8">
             {{ $t('home.subtitle') }}
           </p>
-          <button class="bg-white hover:bg-gray-100 text-repae-blue font-brand font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg">
+          <button class="bg-white hover:bg-gray-100 text-repae-blue-500 font-brand font-semibold px-8 py-3 rounded-lg transition-colors shadow-lg">
             {{ $t('home.cta') }}
           </button>
         </div>
@@ -64,12 +64,12 @@
       <!-- Grid de fonctionnalités avec couleurs REPAE -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 ">
         <!-- Card Réseau -->
-        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-repae-blue dark:border-repae-blue-400 border border-gray-200 dark:border-repae-gray-600">
+        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-l-repae-blue-500 dark:border-l-repae-blue-400 border border-gray-200 dark:border-repae-gray-600">
           <div class="flex items-center mb-4">
-            <div class="bg-repae-blue dark:bg-repae-blue-400 text-white p-3 rounded-lg">
+            <div class="bg-repae-blue-500 dark:bg-repae-blue-400 text-white p-3 rounded-lg">
               <font-awesome-icon icon="fa-solid fa-users" class="text-xl" />
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-repae-gray dark:text-white font-brand">
+            <h3 class="text-xl font-semibold ml-4 text-repae-gray-900 dark:text-white font-brand">
               {{ $t('home.features.network.title') }}
             </h3>
           </div>
@@ -84,12 +84,12 @@
         </div>
 
         <!-- Card Professionnel -->
-        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-repae-gray-500 dark:border-repae-gray-400 border border-gray-200 dark:border-repae-gray-600">
+        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-l-repae-gray-500 dark:border-l-repae-gray-400 border border-gray-200 dark:border-repae-gray-600">
           <div class="flex items-center mb-4">
             <div class="bg-repae-gray-500 dark:bg-repae-gray-400 text-white p-3 rounded-lg">
               <font-awesome-icon icon="fa-solid fa-briefcase" class="text-xl" />
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-repae-gray dark:text-white font-brand">
+            <h3 class="text-xl font-semibold ml-4 text-repae-gray-900 dark:text-white font-brand">
               {{ $t('home.features.professional.title') }}
             </h3>
           </div>
@@ -99,12 +99,12 @@
         </div>
 
         <!-- Card Alumni -->
-        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-repae-blue-300 dark:border-repae-blue-400 border  ">
+        <div class="bg-white dark:bg-repae-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-l-repae-blue-300 dark:border-l-repae-blue-400 border border-gray-200 dark:border-repae-gray-600">
           <div class="flex items-center mb-4">
             <div class="bg-repae-blue-300 text-repae-blue-900 p-3 rounded-lg">
               <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-xl" />
             </div>
-            <h3 class="text-xl font-semibold ml-4 text-repae-gray dark:text-white font-brand">
+            <h3 class="text-xl font-semibold ml-4 text-repae-gray-900 dark:text-white font-brand">
               {{ $t('home.features.alumni.title') }}
             </h3>
           </div>
@@ -116,7 +116,7 @@
 
       <!-- Section CTA -->
       <div class="bg-white dark:bg-repae-gray-800 rounded-2xl shadow-lg p-12 text-center border border-gray-200 dark:border-repae-gray-600">
-        <h2 class="text-3xl font-bold mb-4 text-repae-gray dark:text-white font-brand">
+        <h2 class="text-3xl font-bold mb-4 text-repae-gray-900 dark:text-white font-brand">
           {{ $t('home.cta.title') }}
         </h2>
         <p class="text-lg mb-8 text-repae-gray-600 dark:text-repae-gray-300 font-brand">
@@ -124,10 +124,10 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button class="bg-repae-blue hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-medium px-8 py-3 rounded-lg transition-colors shadow-lg font-brand">
+          <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-medium px-8 py-3 rounded-lg transition-colors shadow-lg font-brand">
             {{ $t('home.cta.primary') }}
           </button>
-          <button class="border-2 border-repae-blue dark:border-repae-blue-400 text-repae-blue dark:text-repae-blue-400 hover:bg-repae-blue hover:text-white dark:hover:bg-repae-blue-400 dark:hover:text-white font-medium px-8 py-3 rounded-lg transition-colors font-brand">
+          <button class="border-2 border-repae-blue-500 dark:border-repae-blue-400 text-repae-blue-500 dark:text-repae-blue-400 hover:bg-repae-blue-500 hover:text-white dark:hover:bg-repae-blue-400 dark:hover:text-white font-medium px-8 py-3 rounded-lg transition-colors font-brand">
             {{ $t('home.cta.secondary') }}
           </button>
         </div>
@@ -137,7 +137,7 @@
       <div class="mt-16 text-center">
         <div class="inline-flex items-center px-6 py-3 rounded-lg shadow-lg bg-white dark:bg-repae-gray-800 border border-gray-200 dark:border-repae-gray-600">
           <div class="flex items-center mr-4">
-            <div class="w-3 h-3 rounded-full mr-2 bg-repae-blue dark:bg-repae-blue-400"></div>
+            <div class="w-3 h-3 rounded-full mr-2 bg-repae-blue-500 dark:bg-repae-blue-400"></div>
             <span class="text-sm text-repae-gray-600 dark:text-repae-gray-300 font-brand">
               {{ $t('home.mode.current') }}: {{ isDark ? $t('home.mode.dark') : $t('home.mode.light') }}
             </span>
