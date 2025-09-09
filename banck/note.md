@@ -1,2 +1,5 @@
 implémete la page d'accueil de mon projet Repae en te basant sur la maquette @banck/captures/maquette-accueil.jpg , tu découpera la page en sections et tu utilises des composants réutilisables séparés (AppNavbar, AppHeader, AppFooter, Temoignages De Nos Alumni, Retrouver Nos Alumni, Nos Offres d'emploi, Evénements à vénir, En Collaboration avec). tu simules les données avec du mock data.
 Tu implémentera le dark/light et l'internationalisation (fr/en) avec i18n comme indiqué dans @CLAUDE.md
+
+scan ma charte graphique @banck/captures/charte-graphique-repae.jpg et les contenue du dossier @public/image et utilise les couleurs, les polices et les styles définis et les logos/images pour configurer mon tailwind CSS 4.1.10
+la configuration de cette version de tailwind est particulière, tu peux te référer à la documentation officielle https://tailwindcss.com/docs/installation
