@@ -1,3 +1,85 @@
 {
-  "welcome": "Welcome to the application"
+  "welcome": "Welcome to the application",
+  "demo": {
+    "title": "REPAE - Visual Identity",
+    "subtitle": "Professional Network of ESATIC Alumni",
+    "primaryColor": "Primary Color",
+    "primaryColorDesc": "REPAE blue symbolizes order, respect and uprightness. A serious and responsible network.",
+    "secondaryColor": "Secondary Color",
+    "secondaryColorDesc": "Gray means calm, tranquility and composed spirit. Professional stability.",
+    "typography": "Typography",
+    "typographyDesc": "Montserrat - Balanced font bringing proximity and expertise.",
+    "buttons": "Buttons",
+    "primaryButton": "Primary Button",
+    "secondaryButton": "Secondary Button", 
+    "outlineButton": "Outline Button",
+    "colorPalette": "Color Palette",
+    "blueShades": "REPAE Blue Shades",
+    "grayShades": "REPAE Gray Shades"
+  },
+  "logo": {
+    "alt": "REPAE Logo - Professional Network of ESATIC Alumni"
+  },
+  "darkMode": {
+    "demo": {
+      "title": "REPAE Dark Mode",
+      "subtitle": "Visual identity adaptation demonstration in dark mode",
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode",
+      "colors": "Adaptive Colors",
+      "primaryBlue": "Primary blue (#1488bb)",
+      "darkBlue": "Dark mode blue (#47a7c7)",
+      "primaryGray": "Primary gray (#717173)",
+      "typography": "Adaptive Typography",
+      "primaryText": "Primary text - Readable in all modes",
+      "secondaryText": "Secondary text - Adapted contrast",
+      "mutedText": "Muted text - Preserved hierarchy",
+      "buttons": "Adaptive Buttons",
+      "adaptiveButton": "Adaptive Button",
+      "secondaryButton": "Secondary Button",
+      "outlineButton": "Outline Button",
+      "surfaces": "Surfaces & Backgrounds",
+      "mainSurface": "Main surface - Automatically adapts",
+      "hoverSurface": "Hover surface - Hover on mouseover",
+      "gradientSection": "REPAE Adaptive Gradient",
+      "gradientDesc": "Gradients automatically adapt to dark mode",
+      "logoSection": "Adaptive Logos",
+      "lightLogo": "Light mode logo",
+      "darkLogo": "Dark mode logo",
+      "iconOnly": "Icon only"
+    }
+  },
+  "home": {
+    "title": "REPAE",
+    "subtitle": "Professional Network of ESATIC Alumni",
+    "cta": "Discover the network",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode", 
+    "features": {
+      "network": {
+        "title": "Network",
+        "description": "A closed circle of ESATIC alumni united by strong bonds and exceptional solidarity."
+      },
+      "professional": {
+        "title": "Professional",
+        "description": "A platform that ensures professional stability, calm and peace of mind in your career."
+      },
+      "alumni": {
+        "title": "ESATIC Alumni",
+        "description": "The mark of excellence - We are the representatives of ESATIC know-how and expertise."
+      }
+    },
+    "cta": {
+      "title": "Join Excellence",
+      "description": "Discover how REPAE can transform your professional journey and connect you with the technological elite.",
+      "primary": "Join REPAE",
+      "secondary": "Learn more"
+    },
+    "mode": {
+      "current": "Current mode",
+      "light": "Light",
+      "dark": "Dark", 
+      "brand": "REPAE brand colors"
+    }
+  }
 }

@@ -1,3 +1,85 @@
 {
-  "welcome": "Bienvenue dans l'application"
+  "welcome": "Bienvenue dans l'application",
+  "demo": {
+    "title": "REPAE - Identité Visuelle",
+    "subtitle": "Réseau Professionnel des Alumni de l'ESATIC",
+    "primaryColor": "Couleur Principale",
+    "primaryColorDesc": "Le bleu REPAE symbolise l'ordre, le respect et la droiture. Un réseau sérieux et responsable.",
+    "secondaryColor": "Couleur Secondaire", 
+    "secondaryColorDesc": "Le gris signifie le calme, la tranquillité et l'esprit posé. Stabilité professionnelle.",
+    "typography": "Typographie",
+    "typographyDesc": "Montserrat - Police équilibrée apportant proximité et expertise.",
+    "buttons": "Boutons",
+    "primaryButton": "Bouton Principal",
+    "secondaryButton": "Bouton Secondaire",
+    "outlineButton": "Bouton Contour",
+    "colorPalette": "Palette de Couleurs",
+    "blueShades": "Nuances de Bleu REPAE",
+    "grayShades": "Nuances de Gris REPAE"
+  },
+  "logo": {
+    "alt": "Logo REPAE - Réseau Professionnel des Alumni de l'ESATIC"
+  },
+  "darkMode": {
+    "demo": {
+      "title": "Mode Sombre REPAE",
+      "subtitle": "Démonstration de l'adaptation de l'identité visuelle en mode sombre",
+      "lightMode": "Mode Clair",
+      "darkMode": "Mode Sombre",
+      "colors": "Couleurs Adaptatives",
+      "primaryBlue": "Bleu primaire (#1488bb)",
+      "darkBlue": "Bleu mode sombre (#47a7c7)",
+      "primaryGray": "Gris primaire (#717173)",
+      "typography": "Typographie Adaptative",
+      "primaryText": "Texte principal - Lisible dans tous les modes",
+      "secondaryText": "Texte secondaire - Contraste adapté",
+      "mutedText": "Texte discret - Hiérarchie préservée",
+      "buttons": "Boutons Adaptatifs",
+      "adaptiveButton": "Bouton Adaptatif",
+      "secondaryButton": "Bouton Secondaire",
+      "outlineButton": "Bouton Contour",
+      "surfaces": "Surfaces & Arrière-plans",
+      "mainSurface": "Surface principale - Adapte automatiquement",
+      "hoverSurface": "Surface hover - Survol au hover",
+      "gradientSection": "Gradient Adaptatif REPAE",
+      "gradientDesc": "Les dégradés s'adaptent automatiquement au mode sombre",
+      "logoSection": "Logos Adaptatifs",
+      "lightLogo": "Logo mode clair",
+      "darkLogo": "Logo mode sombre", 
+      "iconOnly": "Icône seule"
+    }
+  },
+  "home": {
+    "title": "REPAE",
+    "subtitle": "Réseau Professionnel des Alumni de l'ESATIC",
+    "cta": "Découvrir le réseau",
+    "lightMode": "Mode Clair",
+    "darkMode": "Mode Sombre",
+    "features": {
+      "network": {
+        "title": "Réseau",
+        "description": "Un cercle fermé d'anciens étudiants de l'ESATIC unis par des liens forts et une solidarité exceptionnelle."
+      },
+      "professional": {
+        "title": "Professionnel", 
+        "description": "Une plateforme qui assure stabilité professionnelle, calme et tranquillité d'esprit dans votre carrière."
+      },
+      "alumni": {
+        "title": "Alumni ESATIC",
+        "description": "L'empreinte de l'excellence - Nous sommes les représentants du savoir-faire et de l'expertise ESATIC."
+      }
+    },
+    "cta": {
+      "title": "Rejoignez l'Excellence",
+      "description": "Découvrez comment REPAE peut transformer votre parcours professionnel et vous connecter avec l'élite technologique.",
+      "primary": "Rejoindre REPAE",
+      "secondary": "En savoir plus"
+    },
+    "mode": {
+      "current": "Mode actuel",
+      "light": "Clair",
+      "dark": "Sombre",
+      "brand": "Couleurs charte REPAE"
+    }
+  }
 }

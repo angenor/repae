@@ -1,0 +1,142 @@
+/* REPAE Brand Theme Configuration for Tailwind CSS */
+@theme {
+  /* REPAE Brand Colors */
+  --color-repae-blue: #1488bb;
+  --color-repae-gray: #717173;
+  
+  /* Brand Blue Scale */
+  --color-repae-blue-50: #e8f4f8;
+  --color-repae-blue-100: #d1e9f1;
+  --color-repae-blue-200: #a3d3e3;
+  --color-repae-blue-300: #75bdd5;
+  --color-repae-blue-400: #47a7c7;
+  --color-repae-blue-500: #1488bb;
+  --color-repae-blue-600: #106d96;
+  --color-repae-blue-700: #0c5271;
+  --color-repae-blue-800: #08374c;
+  --color-repae-blue-900: #041b26;
+  
+  /* Brand Gray Scale */
+  --color-repae-gray-50: #f9f9f9;
+  --color-repae-gray-100: #f3f3f3;
+  --color-repae-gray-200: #e7e7e7;
+  --color-repae-gray-300: #dbdbdb;
+  --color-repae-gray-400: #cfcfcf;
+  --color-repae-gray-500: #717173;
+  --color-repae-gray-600: #5a5a5c;
+  --color-repae-gray-700: #434345;
+  --color-repae-gray-800: #2c2c2e;
+  --color-repae-gray-900: #161617;
+  
+  /* Dark Mode Colors */
+  --color-repae-dark-bg: #0f1419;
+  --color-repae-dark-surface: #1a1f26;
+  --color-repae-dark-surface-hover: #242a33;
+  --color-repae-dark-border: #2d3748;
+  --color-repae-dark-text-primary: #f7fafc;
+  --color-repae-dark-text-secondary: #cbd5e0;
+  --color-repae-dark-text-muted: #a0aec0;
+  --color-repae-blue-dark: #47a7c7;
+  --color-repae-blue-dark-hover: #75bdd5;
+  
+  /* Brand Typography */
+  --font-family-montserrat: Montserrat, ui-sans-serif, system-ui, sans-serif;
+  --font-family-brand: Montserrat, ui-sans-serif, system-ui, sans-serif;
+  
+  /* Brand Spacing (logo protection zone) */
+  --spacing-logo-protection: 30px;
+  
+  /* Brand Gradients */
+  --gradient-repae: linear-gradient(135deg, #1488bb 0%, #717173 100%);
+  --gradient-brand: linear-gradient(135deg, #1488bb 0%, #717173 100%);
+  
+  /* Brand Shadows */
+  --shadow-repae: 0 4px 14px 0 rgba(20, 136, 187, 0.15);
+  --shadow-brand: 0 4px 14px 0 rgba(20, 136, 187, 0.15);
+  --shadow-repae-lg: 0 10px 25px -3px rgba(20, 136, 187, 0.1), 0 4px 6px -2px rgba(20, 136, 187, 0.05);
+  --shadow-repae-xl: 0 25px 50px -12px rgba(20, 136, 187, 0.25);
+}
+
+/* Utility classes for brand elements */
+.repae-logo-protection {
+  padding: var(--spacing-logo-protection);
+}
+
+.repae-gradient {
+  background: var(--gradient-repae);
+}
+
+.brand-gradient {
+  background: var(--gradient-brand);
+}
+
+/* Typography utilities */
+.font-repae {
+  font-family: var(--font-family-montserrat);
+}
+
+.font-brand {
+  font-family: var(--font-family-brand);
+}
+
+/* Dark Mode Utilities */
+.repae-dark-bg {
+  background-color: var(--color-repae-dark-bg);
+}
+
+.repae-dark-surface {
+  background-color: var(--color-repae-dark-surface);
+}
+
+.repae-dark-surface:hover {
+  background-color: var(--color-repae-dark-surface-hover);
+}
+
+.repae-dark-text {
+  color: var(--color-repae-dark-text-primary);
+}
+
+.repae-dark-text-secondary {
+  color: var(--color-repae-dark-text-secondary);
+}
+
+.repae-dark-text-muted {
+  color: var(--color-repae-dark-text-muted);
+}
+
+/* Dark mode button variants */
+.repae-btn-dark {
+  background-color: var(--color-repae-blue-dark);
+  color: var(--color-repae-dark-text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.repae-btn-dark:hover {
+  background-color: var(--color-repae-blue-dark-hover);
+}
+
+.repae-btn-dark:active {
+  background-color: var(--color-repae-blue-dark-active);
+}
+
+/* Auto-adapting classes based on light/dark mode */
+@media (prefers-color-scheme: dark) {
+  .repae-adaptive-bg {
+    background-color: var(--color-repae-dark-bg);
+    color: var(--color-repae-dark-text-primary);
+  }
+  
+  .repae-adaptive-surface {
+    background-color: var(--color-repae-dark-surface);
+    color: var(--color-repae-dark-text-primary);
+    border-color: var(--color-repae-dark-border);
+  }
+  
+  .repae-adaptive-text {
+    color: var(--color-repae-dark-text-primary);
+  }
+  
+  .repae-adaptive-text-secondary {
+    color: var(--color-repae-dark-text-secondary);
+  }
+}
