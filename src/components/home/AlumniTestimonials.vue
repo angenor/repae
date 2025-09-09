@@ -19,7 +19,7 @@ const testimonials = ref([
     image: 'https://i.pravatar.cc/150?img=2',
     content: 'testimonials.content2',
     rating: 5
-  }
+  },
 ])
 
 const currentIndex = ref(0)
@@ -38,10 +38,10 @@ const goToTestimonial = (index) => {
 </script>
 
 <template>
-  <section class="py-16 bg-gray-50 dark:bg-repae-gray-900">
+  <section class="pb-16 pt-32 bg-gray-50 dark:bg-repae-gray-900 ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-repae-gray-900 dark:text-white font-brand mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-repae-blue-500 dark:text-white font-brand mb-4">
           {{ $t('testimonials.title') }}
         </h2>
         <p class="text-lg text-repae-gray-600 dark:text-repae-gray-300 font-brand">
@@ -69,14 +69,6 @@ const goToTestimonial = (index) => {
                 <p class="text-sm text-repae-gray-600 dark:text-repae-gray-400 font-brand">
                   {{ $t(testimonial.role) }} - {{ testimonial.company }}
                 </p>
-                <div class="flex mt-2">
-                  <font-awesome-icon 
-                    v-for="i in 5" 
-                    :key="i"
-                    icon="fa-solid fa-star" 
-                    class="text-yellow-400 mr-1"
-                  />
-                </div>
               </div>
             </div>
             

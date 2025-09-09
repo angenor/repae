@@ -1,11 +1,11 @@
 <script setup>
 import AppNavbar from '@/components/AppNavbar.vue'
-import HeroSection from '@/components/HeroSection.vue'
-import AlumniTestimonials from '@/components/AlumniTestimonials.vue'
-import FindAlumni from '@/components/FindAlumni.vue'
-import JobOffers from '@/components/JobOffers.vue'
-import UpcomingEvents from '@/components/UpcomingEvents.vue'
-import Partnerships from '@/components/Partnerships.vue'
+import HeroSection from '@/components/home/HeroSection.vue'
+import AlumniTestimonials from '@/components/home/AlumniTestimonials.vue'
+import FindAlumni from '@/components/home/FindAlumni.vue'
+import JobOffers from '@/components/home/JobOffers.vue'
+import UpcomingEvents from '@/components/home/UpcomingEvents.vue'
+import Partnerships from '@/components/home/Partnerships.vue'
 import AppFooter from '@/components/AppFooter.vue'
 </script>
 
