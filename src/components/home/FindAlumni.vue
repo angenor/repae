@@ -40,83 +40,94 @@ const handleSearch = () => {
           </div>
         </div>
 
-        <div class="bg-gradient-to-br from-repae-blue-500 to-repae-blue-600 dark:from-repae-blue-400 dark:to-repae-blue-500 rounded-xl p-8 shadow-xl">
-          <div class="flex items-center justify-center mb-6">
-            <div class="bg-white rounded-full p-4">
-              <font-awesome-icon icon="fa-solid fa-search" class="text-2xl text-repae-blue-500" />
-            </div>
+        <!-- Formulaire - côté droit avec fond sombre REPAE -->
+        <div class="bg-slate-700 dark:bg-slate-800 p-8 flex flex-col justify-center  max-w-md w-full relative">
+          <div class="flex items-center justify-center mb-4 absolute -top-16 left-1/2 transform -translate-x-1/2">
+            <!-- Logo REPAE simplifié -->
+            <img class="w-32 h-32 rounded-full" src="/image/logos_REAPE/DECLINAISON/logo_BBL.png" alt="">
+          </div>
+          <!-- Logo et titre du formulaire -->
+          <div class="text-center mb-8 mt-10">
+            <h3 class="text-xl font-bold text-white font-brand">
+              {{ $t('findAlumni.searchTitle') }}
+            </h3>
+            <p class="text-sm text-gray-300 font-brand mt-2">
+              {{ $t('findAlumni.searchSubtitle') }}
+            </p>
           </div>
           
-          <h3 class="text-2xl font-bold text-white font-brand mb-6 text-center">
-            {{ $t('findAlumni.searchTitle') }}
-          </h3>
-          
+          <!-- Formulaire avec icônes bleues -->
           <form @submit.prevent="handleSearch" class="space-y-4">
-            <div>
-              <label class="block text-white font-brand mb-2">
-                <font-awesome-icon icon="fa-solid fa-user" class="mr-2" />
-                {{ $t('findAlumni.fields.name') }}
-              </label>
+            <!-- Champ Nom -->
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <font-awesome-icon icon="fa-solid fa-user" class="text-repae-blue-500 text-lg" />
+              </div>
               <input 
                 v-model="formData.name"
                 type="text"
-                class="w-full px-4 py-3 rounded-lg bg-white/90 dark:bg-repae-gray-700 text-repae-gray-900 dark:text-white font-brand placeholder-repae-gray-400"
+                class="w-full pl-12 pr-4 py-3 rounded-lg bg-white text-repae-gray-900 font-brand placeholder-repae-gray-400 border-0"
                 :placeholder="$t('findAlumni.placeholders.name')"
               >
             </div>
             
-            <div>
-              <label class="block text-white font-brand mb-2">
-                <font-awesome-icon icon="fa-solid fa-building" class="mr-2" />
-                {{ $t('findAlumni.fields.company') }}
-              </label>
+            <!-- Champ Entreprise -->
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <font-awesome-icon icon="fa-solid fa-building" class="text-repae-blue-500 text-lg" />
+              </div>
               <input 
                 v-model="formData.company"
                 type="text"
-                class="w-full px-4 py-3 rounded-lg bg-white/90 dark:bg-repae-gray-700 text-repae-gray-900 dark:text-white font-brand placeholder-repae-gray-400"
+                class="w-full pl-12 pr-4 py-3 rounded-lg bg-white text-repae-gray-900 font-brand placeholder-repae-gray-400 border-0"
                 :placeholder="$t('findAlumni.placeholders.company')"
               >
             </div>
             
-            <div>
-              <label class="block text-white font-brand mb-2">
-                <font-awesome-icon icon="fa-solid fa-map-marker-alt" class="mr-2" />
-                {{ $t('findAlumni.fields.location') }}
-              </label>
+            <!-- Champ Email -->
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <font-awesome-icon icon="fa-solid fa-envelope" class="text-repae-blue-500 text-lg" />
+              </div>
               <input 
-                v-model="formData.location"
-                type="text"
-                class="w-full px-4 py-3 rounded-lg bg-white/90 dark:bg-repae-gray-700 text-repae-gray-900 dark:text-white font-brand placeholder-repae-gray-400"
-                :placeholder="$t('findAlumni.placeholders.location')"
+                v-model="formData.email"
+                type="email"
+                class="w-full pl-12 pr-4 py-3 rounded-lg bg-white text-repae-gray-900 font-brand placeholder-repae-gray-400 border-0"
+                :placeholder="$t('findAlumni.placeholders.email')"
               >
             </div>
             
-            <div>
-              <label class="block text-white font-brand mb-2">
-                <font-awesome-icon icon="fa-solid fa-graduation-cap" class="mr-2" />
-                {{ $t('findAlumni.fields.promotion') }}
-              </label>
+            <!-- Champ Promotion/Formation -->
+            <div class="relative">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <font-awesome-icon icon="fa-solid fa-graduation-cap" class="text-repae-blue-500 text-lg" />
+              </div>
               <select 
                 v-model="formData.promotion"
-                class="w-full px-4 py-3 rounded-lg bg-white/90 dark:bg-repae-gray-700 text-repae-gray-900 dark:text-white font-brand"
+                class="w-full pl-12 pr-4 py-3 rounded-lg bg-white text-repae-gray-900 font-brand border-0 appearance-none"
               >
                 <option value="">{{ $t('findAlumni.placeholders.promotion') }}</option>
+                <option value="2024">2024</option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
+                <option value="2019">2019</option>
               </select>
             </div>
             
+            <!-- Bouton de recherche -->
             <button 
               type="submit"
-              class="w-full bg-white hover:bg-gray-100 text-repae-blue-500 font-brand font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+              class="w-full bg-repae-blue-500 hover:bg-repae-blue-600 text-white font-brand font-bold py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg mt-6"
             >
               {{ $t('findAlumni.searchButton') }}
             </button>
           </form>
         </div>
+        
       </div>
     </div>
+    
   </section>
 </template>

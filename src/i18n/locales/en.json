@@ -127,7 +127,8 @@
     "title": "Find Our Alumni",
     "subtitle": "Connect with our members around the world",
     "mapInfo": "150+ alumni in the region",
-    "searchTitle": "Search for Alumni",
+    "searchTitle": "Create an ALUMNI account",
+    "searchSubtitle": "Connect with our professional network of excellence",
     "fields": {
       "name": "Name",
       "company": "Company",
@@ -137,10 +138,11 @@
     "placeholders": {
       "name": "Enter a name...",
       "company": "Enter a company...",
+      "email": "Enter your email...",
       "location": "Enter a city...",
       "promotion": "Select a promotion"
     },
-    "searchButton": "Search"
+    "searchButton": "Register"
   },
   "jobOffers": {
     "title": "Job Offers",
