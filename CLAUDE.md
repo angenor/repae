@@ -69,7 +69,7 @@ This is a Vue 3 application using the Composition API with the following stack:
 - Uses ES modules throughout
 - Vite dev server runs on port 5173, preview on 4173
 - Import alias `@` points to `src/` directory
-- Dark mode implementation includes extensive console logging for debugging
+- Custom REPAE colors configured via `@theme` directive in Tailwind v4
 
 ## Translation Requirements
 
@@ -213,44 +213,44 @@ repae-gradient, brand-gradient       /* CSS gradient classes */
 p-logo-protection                    /* 30px padding (logo protection zone) */
 ```
 
-#### Dark Mode Colors
-The brand colors adapt to dark mode with specific color values:
+#### Best Practices for REPAE Colors
 
-**Dark Mode Specific Colors:**
+**ALWAYS use specific color variations (50-900) instead of base names:**
 ```css
-/* Dark backgrounds */
-bg-repae-dark-bg              /* #0f1419 - Main dark background */
-bg-repae-dark-surface         /* #1a1f26 - Cards, modals surface */
-bg-repae-dark-surface-hover   /* #242a33 - Hover states */
+/* ✅ CORRECT - Use specific variations */
+bg-repae-blue-500 hover:bg-repae-blue-600
+text-repae-gray-900 dark:text-white
+border-l-repae-blue-500 dark:border-l-repae-blue-400
 
-/* Dark borders and text */
-border-repae-dark-border      /* #2d3748 - Borders in dark mode */
-text-repae-dark-text-primary    /* #f7fafc - Primary text in dark */
-text-repae-dark-text-secondary  /* #cbd5e0 - Secondary text in dark */
-text-repae-dark-text-muted      /* #a0aec0 - Muted text in dark */
-
-/* Dark mode brand blue adaptations */
-bg-repae-blue-dark            /* #47a7c7 - Lighter blue for dark mode */
-bg-repae-blue-dark-hover      /* #75bdd5 - Hover state in dark mode */
-bg-repae-blue-dark-active     /* #1488bb - Active state in dark mode */
+/* ❌ INCORRECT - Don't use base names */
+bg-repae-blue hover:bg-repae-blue-600
+text-repae-gray dark:text-white
+border-repae-blue dark:border-repae-blue-400
 ```
 
-**Usage with dark: prefix:**
+**Common REPAE Color Patterns:**
 ```css
-/* Adaptive backgrounds */
-bg-white dark:bg-repae-dark-surface
-bg-gray-50 dark:bg-repae-dark-bg
+/* Headers and titles */
+text-repae-gray-900 dark:text-white
 
-/* Adaptive text */
-text-repae-gray dark:text-repae-dark-text-primary
-text-repae-gray-600 dark:text-repae-dark-text-secondary
+/* Body text */
+text-repae-gray-600 dark:text-repae-gray-300
 
-/* Adaptive buttons */
-bg-repae-blue dark:bg-repae-blue-dark
-hover:bg-repae-blue-600 dark:hover:bg-repae-blue-dark-hover
+/* Muted/secondary text */
+text-repae-gray-500 dark:text-repae-gray-400
 
-/* Adaptive borders */
-border-gray-300 dark:border-repae-dark-border
+/* Card backgrounds */
+bg-white dark:bg-repae-gray-800
+
+/* Page backgrounds */
+bg-gray-50 dark:bg-repae-gray-900
+
+/* Primary buttons */
+bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300
+
+/* Borders */
+border-gray-200 dark:border-repae-gray-600
+border-l-repae-blue-500 dark:border-l-repae-blue-400
 ```
 
 ### Logo Component
@@ -275,27 +275,51 @@ border-gray-300 dark:border-repae-dark-border
 - **USE ONLY** the specified colors (#1488bb, #717173) and their generated variations
 - **USE ONLY** Montserrat font family throughout the application
 
-### Example Usage (Updated for Tailwind v4)
+### Complete Example (Tailwind v4 + REPAE Colors)
 ```vue
+<script setup>
+import { useDarkMode } from '@/composables/useSimpleDarkMode'
+import { useI18n } from 'vue-i18n'
+
+const { isDark, toggle } = useDarkMode()
+const { t } = useI18n()
+</script>
+
 <template>
-  <!-- Header with brand gradient -->
-  <header class="bg-gradient-to-r from-repae-blue-500 to-repae-gray-500 text-white p-8">
-    <h1 class="font-brand text-4xl font-bold">{{ $t('brand.title') }}</h1>
-  </header>
-  
-  <!-- Primary button -->
-  <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-6 py-3 rounded-lg shadow-lg">
-    {{ $t('buttons.primary') }}
-  </button>
-  
-  <!-- Brand card with proper dark mode -->
-  <div class="bg-white dark:bg-repae-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-repae-blue-500 border border-gray-200 dark:border-repae-gray-600">
-    <h3 class="font-brand text-lg font-semibold text-repae-gray-900 dark:text-white">
-      {{ $t('card.title') }}
-    </h3>
-    <p class="font-brand text-repae-gray-600 dark:text-repae-gray-300">
-      {{ $t('card.description') }}
-    </p>
+  <div class="min-h-screen bg-gray-50 dark:bg-repae-gray-900">
+    <!-- Header with brand gradient -->
+    <header class="bg-gradient-to-r from-repae-blue-500 to-repae-gray-500 dark:from-repae-blue-400 dark:to-repae-gray-400 text-white p-8">
+      <div class="flex justify-between items-center">
+        <h1 class="font-brand text-4xl font-bold">{{ $t('brand.title') }}</h1>
+        
+        <!-- Dark mode toggle -->
+        <button 
+          @click="toggle"
+          class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors"
+        >
+          <font-awesome-icon :icon="isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" class="mr-2" />
+          {{ isDark ? $t('lightMode') : $t('darkMode') }}
+        </button>
+      </div>
+    </header>
+    
+    <!-- Main content -->
+    <main class="max-w-7xl mx-auto p-8">
+      <!-- Brand card with proper dark mode -->
+      <div class="bg-white dark:bg-repae-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-l-repae-blue-500 border border-gray-200 dark:border-repae-gray-600">
+        <h3 class="font-brand text-lg font-semibold text-repae-gray-900 dark:text-white mb-4">
+          {{ $t('card.title') }}
+        </h3>
+        <p class="font-brand text-repae-gray-600 dark:text-repae-gray-300 mb-4">
+          {{ $t('card.description') }}
+        </p>
+        
+        <!-- Primary button -->
+        <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-6 py-3 rounded-lg shadow-lg">
+          {{ $t('buttons.primary') }}
+        </button>
+      </div>
+    </main>
   </div>
 </template>
 ```
@@ -366,3 +390,45 @@ The `useDarkMode()` composable handles:
 - DOM class management (`dark` class on `<html>`)
 
 **ALWAYS** use the standard Tailwind `dark:` prefixes with REPAE brand colors for consistent dark mode implementation.
+
+## Quick Reference for REPAE Development
+
+### Essential Commands
+```bash
+npm run dev        # Start development server (port varies)
+npm run build      # Production build
+```
+
+### Color Usage Checklist
+- ✅ Use `bg-repae-blue-500` instead of `bg-repae-blue`
+- ✅ Use `text-repae-gray-900 dark:text-white` for titles
+- ✅ Use `text-repae-gray-600 dark:text-repae-gray-300` for body text
+- ✅ Use `border-l-repae-blue-500` for left borders (avoids CSS conflicts)
+- ✅ Use `font-brand` for all text (Montserrat font)
+
+### Dark Mode Setup
+```vue
+<script setup>
+import { useDarkMode } from '@/composables/useSimpleDarkMode'
+const { isDark, toggle } = useDarkMode()
+</script>
+```
+
+### Translation Setup
+```vue
+<script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+</script>
+
+<template>
+  <h1>{{ $t('page.title') }}</h1>
+</template>
+```
+
+### File Locations
+- **Custom colors**: `/src/assets/tailwind.css` (with `@theme` directive)
+- **Dark mode composable**: `/src/composables/useSimpleDarkMode.js`
+- **Translations**: `/src/i18n/locales/en.json` and `/fr.json`
+- **Components**: `/src/components/`
+- **Views**: `/src/views/`
