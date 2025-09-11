@@ -136,6 +136,7 @@
       "promotion": "Promotion"
     },
     "placeholders": {
+      "firstName": "Enter a first name...",
       "name": "Enter a name...",
       "company": "Enter a company...",
       "email": "Enter your email...",
@@ -147,7 +148,7 @@
   "jobOffers": {
     "title": "Job Offers",
     "subtitle": "Exclusive opportunities for REPAE members",
-    "applyButton": "Apply",
+    "applyButton": "See the offer",
     "viewAllButton": "View all offers",
     "types": {
       "cdi": "Permanent",

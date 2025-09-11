@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const formData = ref({
+  firstName: '',
   name: '',
   company: '',
   location: '',
@@ -48,6 +49,19 @@ const handleSearch = () => {
             
             <!-- Formulaire responsive -->
             <form @submit.prevent="handleSearch" class="space-y-3 sm:space-y-4">
+              <!-- Champ Prénom -->
+              <div class="relative">
+                <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                  <font-awesome-icon icon="fa-solid fa-user" class="text-repae-blue-500 text-base sm:text-lg" />
+                </div>
+                <input 
+                  v-model="formData.firstName"
+                  type="text"
+                  class="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 rounded-lg bg-white text-repae-gray-900 font-brand placeholder-repae-gray-400 border-0 text-sm sm:text-base"
+                  :placeholder="$t('findAlumni.placeholders.firstName')"
+                >
+              </div>
+              
               <!-- Champ Nom -->
               <div class="relative">
                 <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
@@ -60,6 +74,7 @@ const handleSearch = () => {
                   :placeholder="$t('findAlumni.placeholders.name')"
                 >
               </div>
+              
               
               <!-- Champ Entreprise -->
               <div class="relative">
