@@ -14,7 +14,7 @@ const socialLinks = ref([
 <template>
   <footer class="bg-repae-gray-900 dark:bg-black text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <div class="flex items-center mb-4">
             <img 
@@ -40,57 +40,6 @@ const socialLinks = ref([
           </div>
         </div>
 
-        <div>
-          <h4 class="text-lg font-bold font-brand mb-4">{{ $t('footer.quickLinks') }}</h4>
-          <ul class="space-y-2">
-            <li>
-              <RouterLink to="/" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('nav.home') }}
-              </RouterLink>
-            </li>
-            <li>
-              <a href="#association" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('nav.association') }}
-              </a>
-            </li>
-            <li>
-              <a href="#alumni" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('nav.alumni') }}
-              </a>
-            </li>
-            <li>
-              <a href="#enterprises" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('nav.enterprises') }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-lg font-bold font-brand mb-4">{{ $t('footer.resources') }}</h4>
-          <ul class="space-y-2">
-            <li>
-              <a href="#" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('footer.jobBoard') }}
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('footer.events') }}
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('footer.news') }}
-              </a>
-            </li>
-            <li>
-              <a href="#" class="text-repae-gray-300 hover:text-repae-blue-400 font-brand transition-colors">
-                {{ $t('footer.documents') }}
-              </a>
-            </li>
-          </ul>
-        </div>
 
         <div>
           <h4 class="text-lg font-bold font-brand mb-4">{{ $t('footer.contact') }}</h4>
