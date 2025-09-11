@@ -18,7 +18,7 @@ const toggleMobileMenu = () => {
         <div class="flex items-center">
           <RouterLink to="/" class="flex items-center">
             <img 
-              src="/image/logos_REAPE/ICONE/ICONE_REPAE_BGR.png" 
+              :src="isDark ? '/image/logos_REAPE/ICONE/ICONE_REPAE_GRB1.png' : '/image/logos_REAPE/ICONE/ICONE_REPAE_BGR1.png'" 
               alt="REPAE"
               class="h-10 w-10 mr-2"
             />
@@ -26,7 +26,7 @@ const toggleMobileMenu = () => {
           </RouterLink>
         </div>
 
-        <div class="hidden md:flex items-center space-x-8 uppercase">
+        <div class="hidden md:flex items-center space-x-8 ">
           <RouterLink 
             to="/" 
             class="text-repae-gray-700 dark:text-repae-gray-300 hover:text-repae-blue-500 dark:hover:text-repae-blue-400 font-brand transition-colors"
@@ -60,11 +60,18 @@ const toggleMobileMenu = () => {
         </div>
 
         <div class="hidden md:flex items-center space-x-4">
-          <button 
-            class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            {{ $t('nav.memberSpace') }}
-          </button>
+          <!-- Search Bar -->
+          <div class="relative">
+            <input 
+              type="text" 
+              :placeholder="$t('search.placeholder')"
+              class="w-64 px-4 py-2 pl-10 pr-4 text-sm bg-gray-100 dark:bg-repae-gray-700 border border-gray-300 dark:border-repae-gray-600 rounded-lg focus:ring-2 focus:ring-repae-blue-500 focus:border-transparent text-repae-gray-900 dark:text-white placeholder-repae-gray-500 dark:placeholder-repae-gray-400 font-brand transition-colors"
+            />
+            <font-awesome-icon 
+              icon="fa-solid fa-search" 
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 text-repae-gray-500 dark:text-repae-gray-400 text-sm"
+            />
+          </div>
           <LanguageSwitcher />
           <button 
             @click="toggle"
@@ -128,11 +135,18 @@ const toggleMobileMenu = () => {
           {{ $t('nav.contact') }}
         </a>
         <div class="pt-4 border-t border-gray-200 dark:border-repae-gray-700">
-          <button 
-            class="w-full bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            {{ $t('nav.memberSpace') }}
-          </button>
+          <!-- Mobile Search Bar -->
+          <div class="relative mb-4">
+            <input 
+              type="text" 
+              :placeholder="$t('search.placeholder')"
+              class="w-full px-4 py-2 pl-10 pr-4 text-sm bg-gray-100 dark:bg-repae-gray-700 border border-gray-300 dark:border-repae-gray-600 rounded-lg focus:ring-2 focus:ring-repae-blue-500 focus:border-transparent text-repae-gray-900 dark:text-white placeholder-repae-gray-500 dark:placeholder-repae-gray-400 font-brand transition-colors"
+            />
+            <font-awesome-icon 
+              icon="fa-solid fa-search" 
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 text-repae-gray-500 dark:text-repae-gray-400 text-sm"
+            />
+          </div>
           <div class="flex items-center justify-between mt-4">
             <LanguageSwitcher />
             <button 

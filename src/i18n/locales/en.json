@@ -90,6 +90,9 @@
     "contact": "Contact",
     "memberSpace": "Member Space"
   },
+  "search": {
+    "placeholder": "Search..."
+  },
   "hero": {
     "title": "We are the mark of excellence",
     "subtitle": "Join the professional network of ESATIC alumni and transform your career",

@@ -90,6 +90,9 @@
     "contact": "Contact",
     "memberSpace": "Espace Membre"
   },
+  "search": {
+    "placeholder": "Rechercher..."
+  },
   "hero": {
     "title": "Nous sommes l'empreinte de l'excellence",
     "subtitle": "Rejoignez le réseau professionnel des alumni de l'ESATIC et transformez votre carrière",
