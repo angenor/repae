@@ -167,8 +167,8 @@ const getStatusClasses = (status) => {
         </div>
         
         <!-- Continuous Timeline Line -->
-        <div class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" 
-             style="left: calc(50% - (48px * 2) - (1.5rem * 1.5)); right: calc(50% - (48px * 2) - (1.5rem * 1.5));"></div>
+        <div class="absolute top-6 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" 
+             style="left: calc(50% - 33rem); width: 66rem;"></div>
       </div>
     </div>
   </section>
