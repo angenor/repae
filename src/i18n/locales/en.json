@@ -268,7 +268,20 @@
     "allRightsReserved": "All rights reserved",
     "privacy": "Privacy",
     "terms": "Terms",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "newsSection": {
+      "title": "NEWS",
+      "publishedOn": "Published on",
+      "readMore": "Read more",
+      "article1": {
+        "title": "Challenges and strategies of document management in the era of GenAI",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non sodales orci, sit amet lacoreet ante. Nullam venenatis tempus felis, eget sagittis elit."
+      },
+      "article2": {
+        "title": "Digital transformation and the future of work",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non sodales orci, sit amet lacoreet ante. Nullam venenatis tempus felis, eget sagittis elit."
+      }
+    }
   },
   "lightMode": "Light Mode",
   "darkMode": "Dark Mode"

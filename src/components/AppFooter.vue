@@ -9,6 +9,23 @@ const socialLinks = ref([
   { icon: 'fa-brands fa-linkedin', url: '#', label: 'LinkedIn' },
   { icon: 'fa-brands fa-instagram', url: '#', label: 'Instagram' }
 ])
+
+const newsArticles = ref([
+  {
+    id: 1,
+    image: '/image/background/evenement1.jpg',
+    date: '03 Mars 2025',
+    title: 'footer.newsSection.article1.title',
+    description: 'footer.newsSection.article1.description'
+  },
+  {
+    id: 2,
+    image: '/image/background/evenement2.jpg',
+    date: '03 Mars 2025',
+    title: 'footer.newsSection.article2.title',
+    description: 'footer.newsSection.article2.description'
+  }
+])
 </script>
 
 <template>
@@ -61,6 +78,73 @@ const socialLinks = ref([
               </span>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <!-- Section Actualités -->
+      <div class="mt-16">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold text-white font-brand">{{ $t('footer.newsSection.title') }}</h3>
+        </div>
+        
+        <!-- Carrousel d'actualités -->
+        <div class="relative">
+          <!-- Flèche gauche -->
+          <button 
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
+            aria-label="Article précédent"
+          >
+            <font-awesome-icon icon="fa-solid fa-chevron-left" class="text-xl" />
+          </button>
+          
+          <!-- Flèche droite -->
+          <button 
+            class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
+            aria-label="Article suivant"
+          >
+            <font-awesome-icon icon="fa-solid fa-chevron-right" class="text-xl" />
+          </button>
+          
+          <!-- Conteneur des articles -->
+          <div class="mx-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article 
+              v-for="article in newsArticles" 
+              :key="article.id"
+              class="bg-repae-gray-800 dark:bg-repae-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <!-- Image de couverture -->
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  :src="article.image" 
+                  :alt="$t(article.title)"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              
+              <!-- Contenu de l'article -->
+              <div class="p-6">
+                <!-- Date de publication -->
+                <p class="text-repae-gray-400 text-sm font-brand mb-2">
+                  {{ $t('footer.newsSection.publishedOn') }} {{ article.date }}
+                </p>
+                
+                <!-- Titre -->
+                <h4 class="text-xl font-bold text-white font-brand mb-4 leading-tight">
+                  {{ $t(article.title) }}
+                </h4>
+                
+                <!-- Description -->
+                <p class="text-repae-gray-300 font-brand mb-6 leading-relaxed">
+                  {{ $t(article.description) }}
+                </p>
+                
+                <!-- Bouton Lire plus -->
+                <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors">
+                  {{ $t('footer.newsSection.readMore') }}
+                </button>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
 

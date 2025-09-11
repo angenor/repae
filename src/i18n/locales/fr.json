@@ -268,7 +268,20 @@
     "allRightsReserved": "Tous droits réservés",
     "privacy": "Confidentialité",
     "terms": "Conditions",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "newsSection": {
+      "title": "ACTUALITÉS",
+      "publishedOn": "Publié le",
+      "readMore": "Lire plus",
+      "article1": {
+        "title": "Enjeux et stratégies de la gestion documentaire à l'heure de la GenAI",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non sodales orci, sit amet lacoreet ante. Nullam venenatis tempus felis, eget sagittis elit."
+      },
+      "article2": {
+        "title": "Transformation digitale et l'avenir du travail",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non sodales orci, sit amet lacoreet ante. Nullam venenatis tempus felis, eget sagittis elit."
+      }
+    }
   },
   "lightMode": "Mode Clair",
   "darkMode": "Mode Sombre"
