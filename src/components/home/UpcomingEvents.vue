@@ -80,7 +80,7 @@ const formatDate = (dateString) => {
   <section class="py-16 bg-gray-50 dark:bg-repae-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-repae-gray-900 dark:text-white font-brand mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-repae-blue-500 dark:text-white font-brand mb-4">
           {{ $t('events.title') }}
         </h2>
         <p class="text-lg text-repae-gray-600 dark:text-repae-gray-300 font-brand">
@@ -137,7 +137,7 @@ const formatDate = (dateString) => {
               </p>
             </div>
             
-            <button class="mt-4 w-full bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium py-2 rounded-lg text-sm transition-colors">
+            <button class="mt-4 w-full cursor-pointer bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium py-2 rounded-lg text-sm transition-colors">
               {{ $t('events.registerButton') }}
             </button>
           </div>
@@ -145,7 +145,7 @@ const formatDate = (dateString) => {
       </div>
 
       <div class="text-center mt-12">
-        <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-bold px-8 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105">
+        <button class="cursor-pointer bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-bold px-8 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105">
           {{ $t('events.viewAllButton') }}
         </button>
       </div>
