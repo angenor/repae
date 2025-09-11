@@ -1,153 +1,169 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const events = ref([
   {
     id: 1,
-    title: 'events.event1.title',
-    date: '2024-02-10',
-    time: '18:00',
-    location: 'Nantes',
-    type: 'events.types.conference',
+    title: 'events.upcomingEvents.academicEntry.title',
+    date: '2024-06-12',
     image: '/image/background/evenement1.jpg',
-    description: 'events.event1.description',
-    attendees: 45
+    status: 'completed',
+    description: 'events.upcomingEvents.academicEntry.description'
   },
   {
     id: 2,
-    title: 'events.event2.title',
-    date: '2024-02-15',
-    time: '19:00',
-    location: 'Paris',
-    type: 'events.types.networking',
+    title: 'events.upcomingEvents.openDay.title',
+    date: '2025-09-12',
     image: '/image/background/evenement2.jpg',
-    description: 'events.event2.description',
-    attendees: 30
+    status: 'ongoing',
+    description: 'events.upcomingEvents.maracanaTournament.description'
   },
   {
     id: 3,
-    title: 'events.event3.title',
-    date: '2024-02-20',
-    time: '14:00',
-    location: 'Lyon',
-    type: 'events.types.workshop',
+    title: 'events.upcomingEvents.openDay.title',
+    date: '2026-06-12',
     image: '/image/background/evenement3.jpg',
-    description: 'events.event3.description',
-    attendees: 25
+    status: 'upcoming',
+    description: 'events.upcomingEvents.maracanaTournament.description'
   },
   {
     id: 4,
-    title: 'events.event4.title',
-    date: '2024-02-25',
-    time: '09:00',
-    location: 'Nantes',
-    type: 'events.types.formation',
+    title: 'events.upcomingEvents.openDay.title',
+    date: '2026-06-12',
     image: '/image/background/evenement4.jpg',
-    description: 'events.event4.description',
-    attendees: 50
+    status: 'upcoming',
+    description: 'events.upcomingEvents.webinar.description'
   },
   {
     id: 5,
-    title: 'events.event5.title',
-    date: '2024-03-01',
-    time: '20:00',
-    location: 'Nantes',
-    type: 'events.types.gala',
+    title: 'events.upcomingEvents.openDay.title',
+    date: '2026-06-12',
     image: '/image/background/evenement1.jpg',
-    description: 'events.event5.description',
-    attendees: 120
+    status: 'upcoming',
+    description: 'events.upcomingEvents.techJustice.description'
   }
 ])
 
-const getEventIcon = (type) => {
-  const icons = {
-    'events.types.conference': 'fa-microphone',
-    'events.types.networking': 'fa-handshake',
-    'events.types.workshop': 'fa-tools',
-    'events.types.formation': 'fa-graduation-cap',
-    'events.types.gala': 'fa-glass-cheers'
-  }
-  return icons[type] || 'fa-calendar'
-}
-
 const formatDate = (dateString) => {
   const date = new Date(dateString)
-  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })
+  return date.toLocaleDateString('fr-FR', { 
+    day: 'numeric', 
+    month: 'long',
+    year: 'numeric'
+  })
+}
+
+const getStatusIcon = (status) => {
+  switch(status) {
+    case 'completed':
+      return 'fa-check'
+    case 'ongoing':
+      return 'fa-spinner'
+    case 'upcoming':
+      return 'fa-circle'
+    default:
+      return 'fa-circle'
+  }
+}
+
+const getStatusClasses = (status) => {
+  switch(status) {
+    case 'completed':
+      return 'bg-repae-blue-500 text-white'
+    case 'ongoing':
+      return 'bg-repae-blue-500 text-white'
+    case 'upcoming':
+      return 'bg-repae-gray-400 text-white'
+    default:
+      return 'bg-repae-gray-400 text-white'
+  }
 }
 </script>
 
 <template>
   <section class="py-16 bg-gray-50 dark:bg-repae-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Title -->
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-repae-blue-500 dark:text-white font-brand mb-4">
           {{ $t('events.title') }}
         </h2>
-        <p class="text-lg text-repae-gray-600 dark:text-repae-gray-300 font-brand">
-          {{ $t('events.subtitle') }}
+        <p class="text-lg text-repae-gray-600 dark:text-repae-gray-300 font-brand max-w-3xl mx-auto">
+          {{ $t('events.upcomingEvents.subtitle') }}
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <!-- Event Cards -->
+      <div class="flex justify-center items-end gap-6 mb-16 overflow-x-auto pb-4">
         <div 
           v-for="event in events" 
           :key="event.id"
-          class="bg-white dark:bg-repae-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:scale-105 cursor-pointer"
+          class="flex-shrink-0 relative group cursor-pointer"
+          :class="event.status === 'completed' ? 'opacity-60' : ''"
         >
-          <div class="relative h-40 overflow-hidden">
-            <img 
-              :src="event.image" 
-              :alt="$t(event.title)"
-              class="w-full h-full object-cover"
-            >
-            <div class="absolute top-2 right-2 bg-repae-blue-500 text-white px-3 py-1 rounded-full text-xs font-brand font-bold">
-              {{ formatDate(event.date) }}
-            </div>
-          </div>
-          
-          <div class="p-4">
-            <div class="flex items-center mb-2">
-              <div class="bg-repae-blue-100 dark:bg-repae-blue-900 p-2 rounded-lg mr-3">
-                <font-awesome-icon 
-                  :icon="`fa-solid ${getEventIcon(event.type)}`" 
-                  class="text-repae-blue-500 dark:text-repae-blue-400"
-                />
+          <!-- Event Card -->
+          <div class="w-48 h-72 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <div class="relative w-full h-full">
+              <img 
+                :src="event.image" 
+                :alt="$t(event.title)"
+                class="w-full h-full object-cover"
+                :class="event.status === 'completed' ? 'filter brightness-75' : ''"
+              >
+              <!-- Event Content Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <h3 class="font-brand font-bold text-sm mb-2 leading-tight">
+                    {{ $t(event.title) }}
+                  </h3>
+                  <p class="font-brand text-xs opacity-90 mb-2">
+                    {{ $t(event.description) }}
+                  </p>
+                  <p class="font-brand text-xs opacity-75">
+                    {{ formatDate(event.date) }}
+                  </p>
+                </div>
               </div>
-              <span class="text-xs text-repae-gray-500 dark:text-repae-gray-400 font-brand uppercase">
-                {{ $t(event.type) }}
-              </span>
             </div>
-            
-            <h3 class="font-bold text-repae-gray-900 dark:text-white font-brand mb-2 line-clamp-2">
-              {{ $t(event.title) }}
-            </h3>
-            
-            <div class="space-y-1 text-xs text-repae-gray-600 dark:text-repae-gray-400 font-brand">
-              <p class="flex items-center">
-                <font-awesome-icon icon="fa-solid fa-clock" class="mr-2 text-repae-gray-400" />
-                {{ event.time }}
-              </p>
-              <p class="flex items-center">
-                <font-awesome-icon icon="fa-solid fa-map-marker-alt" class="mr-2 text-repae-gray-400" />
-                {{ event.location }}
-              </p>
-              <p class="flex items-center">
-                <font-awesome-icon icon="fa-solid fa-users" class="mr-2 text-repae-gray-400" />
-                {{ event.attendees }} {{ $t('events.participants') }}
-              </p>
-            </div>
-            
-            <button class="mt-4 w-full cursor-pointer bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium py-2 rounded-lg text-sm transition-colors">
-              {{ $t('events.registerButton') }}
-            </button>
           </div>
         </div>
       </div>
 
-      <div class="text-center mt-12">
-        <button class="cursor-pointer bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-bold px-8 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105">
-          {{ $t('events.viewAllButton') }}
-        </button>
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Timeline Line -->
+        <div class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600"></div>
+        
+        <!-- Timeline Points -->
+        <div class="flex justify-between items-start relative">
+          <div 
+            v-for="event in events" 
+            :key="event.id"
+            class="flex flex-col items-center text-center max-w-32"
+          >
+            <!-- Timeline Point -->
+            <div 
+              class="w-12 h-12 rounded-full flex items-center justify-center mb-4 relative z-10 transition-all duration-300"
+              :class="getStatusClasses(event.status)"
+            >
+              <font-awesome-icon 
+                :icon="`fa-solid ${getStatusIcon(event.status)}`"
+                :class="event.status === 'ongoing' ? 'animate-spin' : ''"
+                class="text-sm"
+              />
+            </div>
+            
+            <!-- Event Title -->
+            <h4 class="font-brand font-semibold text-sm text-repae-gray-900 dark:text-white mb-1 leading-tight">
+              {{ $t(event.title) }}
+            </h4>
+            
+            <!-- Event Date -->
+            <p class="font-brand text-xs text-repae-gray-500 dark:text-repae-gray-400">
+              {{ formatDate(event.date) }}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

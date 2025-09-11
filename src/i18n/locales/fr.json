@@ -206,6 +206,25 @@
     "event5": {
       "title": "Gala Annuel REPAE",
       "description": "Célébration de l'excellence et remise des prix"
+    },
+    "upcomingEvents": {
+      "subtitle": "Morbi tristique maximus tempor. In consectetur sagittis tempor. In consectetur sagittis maximus tempor.",
+      "academicEntry": {
+        "title": "Rentrée Académique du REPAE",
+        "description": "Cérémonie d'ouverture de l'année académique"
+      },
+      "openDay": {
+        "title": "Journée Porte ouverte"
+      },
+      "maracanaTournament": {
+        "description": "REPAE INTERPROMOS - Le Tournoi Maracana"
+      },
+      "webinar": {
+        "description": "Webinaire - Opportunités d'études et d'emploi"
+      },
+      "techJustice": {
+        "description": "Conférence Technology & Justice"
+      }
     }
   },
   "partnerships": {
