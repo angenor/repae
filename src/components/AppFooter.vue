@@ -13,14 +13,14 @@ const socialLinks = ref([
 const newsArticles = ref([
   {
     id: 1,
-    image: '/image/background/evenement1.jpg',
+    image: '/image/actualites/actualite1.png',
     date: '03 Mars 2025',
     title: 'footer.newsSection.article1.title',
     description: 'footer.newsSection.article1.description'
   },
   {
     id: 2,
-    image: '/image/background/evenement2.jpg',
+    image: '/image/actualites/actualite2.jpg',
     date: '03 Mars 2025',
     title: 'footer.newsSection.article2.title',
     description: 'footer.newsSection.article2.description'
@@ -31,7 +31,7 @@ const newsArticles = ref([
 <template>
   <footer class="bg-repae-gray-900 dark:bg-black text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div class="flex items-center mb-4">
             <img 
@@ -58,7 +58,7 @@ const newsArticles = ref([
         </div>
 
 
-        <div>
+        <div class="">
           <h4 class="text-lg font-bold font-brand mb-4">{{ $t('footer.contact') }}</h4>
           <ul class="space-y-2 text-repae-gray-300 font-brand">
             <li class="flex items-center">
@@ -79,19 +79,13 @@ const newsArticles = ref([
             </li>
           </ul>
         </div>
-      </div>
 
-      <!-- Section Actualités -->
-      <div class="mt-16">
-        <div class="text-center mb-8">
-          <h3 class="text-3xl font-bold text-white font-brand">{{ $t('footer.newsSection.title') }}</h3>
-        </div>
-        
+        <!-- Section Actualités -->
         <!-- Carrousel d'actualités -->
-        <div class="relative">
+        <div class="relative col-span-1">
           <!-- Flèche gauche -->
           <button 
-            class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
+            class="absolute cursor-pointer -left-10 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
             aria-label="Article précédent"
           >
             <font-awesome-icon icon="fa-solid fa-chevron-left" class="text-xl" />
@@ -99,21 +93,21 @@ const newsArticles = ref([
           
           <!-- Flèche droite -->
           <button 
-            class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
+            class="absolute cursor-pointer -right-10 top-1/2 transform -translate-y-1/2 z-10 bg-repae-gray-800 hover:bg-repae-gray-700 text-white p-3 rounded-full transition-colors"
             aria-label="Article suivant"
           >
             <font-awesome-icon icon="fa-solid fa-chevron-right" class="text-xl" />
           </button>
           
           <!-- Conteneur des articles -->
-          <div class="mx-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex space-x-2">
             <article 
               v-for="article in newsArticles" 
               :key="article.id"
               class="bg-repae-gray-800 dark:bg-repae-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
               <!-- Image de couverture -->
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-32 overflow-hidden">
                 <img 
                   :src="article.image" 
                   :alt="$t(article.title)"
@@ -122,26 +116,21 @@ const newsArticles = ref([
               </div>
               
               <!-- Contenu de l'article -->
-              <div class="p-6">
+              <div class="px-6 pt-4">
                 <!-- Date de publication -->
                 <p class="text-repae-gray-400 text-sm font-brand mb-2">
                   {{ $t('footer.newsSection.publishedOn') }} {{ article.date }}
                 </p>
                 
                 <!-- Titre -->
-                <h4 class="text-xl font-bold text-white font-brand mb-4 leading-tight">
+                <h4 class="text-sm font-bold text-white font-brand mb-4 leading-tight line-clamp-3">
                   {{ $t(article.title) }}
                 </h4>
                 
                 <!-- Description -->
-                <p class="text-repae-gray-300 font-brand mb-6 leading-relaxed">
+                <p class="text-sm text-repae-gray-300 font-brand mb-6 leading-relaxed line-clamp-3">
                   {{ $t(article.description) }}
                 </p>
-                
-                <!-- Bouton Lire plus -->
-                <button class="bg-repae-blue-500 hover:bg-repae-blue-600 dark:bg-repae-blue-400 dark:hover:bg-repae-blue-300 text-white font-brand font-medium px-4 py-2 rounded-lg transition-colors">
-                  {{ $t('footer.newsSection.readMore') }}
-                </button>
               </div>
             </article>
           </div>
