@@ -18,10 +18,10 @@ const stats = ref([
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div class="w-full md:w-6/12 md:ml-auto text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6">
+        <h1 class="text-4xl text-shadow-lg text-shadow-repae-blue-500 md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6">
           {{ $t('hero.title') }}
         </h1>
-        <p class="text-xl md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl mx-auto md:mx-0">
+        <p class="text-xl  md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl m-x-auto md:mx-0">
           {{ $t('hero.subtitle') }}
         </p>
         
