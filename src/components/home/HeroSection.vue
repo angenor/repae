@@ -12,16 +12,16 @@ const stats = ref([
 <template>
   <section class="relative min-h-[600px] bg-gradient-to-br from-repae-gray-800 to-repae-gray-900 dark:from-repae-gray-900 dark:to-black">
     <div 
-      class="absolute inset-0 bg-cover bg-center opacity-30"
+      class="absolute inset-0 bg-cover bg-center "
       :style="{ backgroundImage: 'url(/image/background/background-image-hero-section.jpg)' }"
     ></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <div class=" w-6/12 sm:ml-auto text-center sm:text-left">
+      <div class="w-full md:w-6/12 md:ml-auto text-center md:text-left">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6">
           {{ $t('hero.title') }}
         </h1>
-        <p class="text-xl md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl mx-auto">
+        <p class="text-xl md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl mx-auto md:mx-0">
           {{ $t('hero.subtitle') }}
         </p>
         
