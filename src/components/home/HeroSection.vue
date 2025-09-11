@@ -17,7 +17,7 @@ const stats = ref([
     ></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <div class="text-center">
+      <div class=" w-6/12 sm:ml-auto text-center sm:text-left">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6">
           {{ $t('hero.title') }}
         </h1>
@@ -25,27 +25,27 @@ const stats = ref([
           {{ $t('hero.subtitle') }}
         </p>
         
-        <div class="flex flex-wrap justify-center gap-4 mb-16">
-          <button class="bg-repae-blue-500 hover:bg-repae-blue-600 text-white font-brand font-medium px-8 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105">
-            {{ $t('hero.buttons.discover') }}
-          </button>
-          <button class="bg-white hover:bg-gray-100 text-repae-gray-900 font-brand font-medium px-8 py-3 rounded-lg shadow-lg transition-all transform hover:scale-105">
-            {{ $t('hero.buttons.join') }}
-          </button>
-        </div>
-        
-        
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 bg-white p-5 relative -bottom-42">
         <div 
           v-for="stat in stats" 
           :key="stat.label"
-          class="bg-repae-blue-500 dark:bg-repae-blue-600 rounded-lg p-6 transform hover:scale-105 transition-all"
+          :class="[
+            'rounded-lg p-6 transform hover:scale-105 transition-all',
+            stat.label === 'hero.stats.insertionRate' 
+              ? 'bg-repae-gray-500 dark:bg-repae-gray-600' 
+              : 'bg-repae-blue-500 dark:bg-repae-blue-600'
+          ]"
         >
           <div class="text-3xl md:text-4xl font-bold text-white font-brand mb-2">
             {{ stat.value }}
           </div>
-          <div class="text-sm text-blue-100 font-brand">
+          <div :class="[
+            'text-sm font-brand',
+            stat.label === 'hero.stats.insertionRate' 
+              ? 'text-gray-200' 
+              : 'text-blue-100'
+          ]">
             {{ $t(stat.label) }}
           </div>
         </div>
