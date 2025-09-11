@@ -26,7 +26,7 @@ const toggleMobileMenu = () => {
           </RouterLink>
         </div>
 
-        <div class="hidden md:flex items-center space-x-8">
+        <div class="hidden md:flex items-center space-x-8 uppercase">
           <RouterLink 
             to="/" 
             class="text-repae-gray-700 dark:text-repae-gray-300 hover:text-repae-blue-500 dark:hover:text-repae-blue-400 font-brand transition-colors"
