@@ -78,6 +78,14 @@ const getStatusClasses = (status) => {
       return 'bg-repae-gray-400 text-white'
   }
 }
+
+const timelineSegments = computed(() => {
+  return events.value.slice(0, -1).map((event, index) => ({
+    ...event,
+    index,
+    isBlue: event.status === 'completed' || event.status === 'ongoing'
+  }))
+})
 </script>
 
 <template>
@@ -156,8 +164,20 @@ const getStatusClasses = (status) => {
             </div>
           </div>
           
-          <!-- Continuous Timeline Line -->
-          <div class="absolute left-4 right-4 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" style="top: 21.5rem;"></div>
+          <!-- Timeline Line Segments -->
+          <div 
+            v-for="segment in timelineSegments" 
+            :key="`line-${segment.id}`"
+            class="absolute h-0.5 transition-colors duration-300"
+            :class="segment.isBlue 
+              ? 'bg-repae-blue-500 dark:bg-repae-blue-400' 
+              : 'bg-repae-gray-300 dark:bg-repae-gray-600'"
+            :style="{
+              top: '21.5rem',
+              left: `calc(50% - 27rem + ${segment.index * 13.5}rem)`,
+              width: '12rem'
+            }"
+          ></div>
         </div>
       </div>
     </div>
