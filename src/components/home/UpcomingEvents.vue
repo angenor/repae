@@ -94,7 +94,7 @@ const getStatusClasses = (status) => {
       </div>
 
       <!-- Event Cards -->
-      <div class="flex justify-center items-end gap-6 mb-16 overflow-x-auto pb-4">
+      <div class="flex justify-center gap-6 mb-16 overflow-x-auto pb-4">
         <div 
           v-for="event in events" 
           :key="event.id"
@@ -131,16 +131,17 @@ const getStatusClasses = (status) => {
 
       <!-- Timeline -->
       <div class="relative">
-        <!-- Timeline Line -->
-        <div class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600"></div>
-        
-        <!-- Timeline Points -->
-        <div class="flex justify-between items-start relative">
+        <!-- Timeline Container with same spacing as cards -->
+        <div class="flex justify-center gap-6">
           <div 
             v-for="event in events" 
-            :key="event.id"
-            class="flex flex-col items-center text-center max-w-32"
+            :key="`timeline-${event.id}`"
+            class="flex-shrink-0 w-48 flex flex-col items-center relative"
           >
+            <!-- Timeline Line Background (only show on middle events) -->
+            <div v-if="event.id !== 1 && event.id !== events.length" 
+                 class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600"></div>
+            
             <!-- Timeline Point -->
             <div 
               class="w-12 h-12 rounded-full flex items-center justify-center mb-4 relative z-10 transition-all duration-300"
@@ -154,16 +155,20 @@ const getStatusClasses = (status) => {
             </div>
             
             <!-- Event Title -->
-            <h4 class="font-brand font-semibold text-sm text-repae-gray-900 dark:text-white mb-1 leading-tight">
+            <h4 class="font-brand font-semibold text-sm text-repae-gray-900 dark:text-white mb-1 leading-tight text-center">
               {{ $t(event.title) }}
             </h4>
             
             <!-- Event Date -->
-            <p class="font-brand text-xs text-repae-gray-500 dark:text-repae-gray-400">
+            <p class="font-brand text-xs text-repae-gray-500 dark:text-repae-gray-400 text-center">
               {{ formatDate(event.date) }}
             </p>
           </div>
         </div>
+        
+        <!-- Continuous Timeline Line -->
+        <div class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" 
+             style="left: calc(50% - (48px * 2) - (1.5rem * 1.5)); right: calc(50% - (48px * 2) - (1.5rem * 1.5));"></div>
       </div>
     </div>
   </section>
