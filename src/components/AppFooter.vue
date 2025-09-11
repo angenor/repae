@@ -67,14 +67,12 @@ const newsArticles = ref([
             </li>
             <li class="flex items-center">
               <font-awesome-icon icon="fa-solid fa-phone" class="mr-2 text-repae-blue-400" />
-              +33 (0)2 40 00 00 00
+              +225 05-45-29-28-02
             </li>
             <li class="flex items-start">
               <font-awesome-icon icon="fa-solid fa-map-marker-alt" class="mr-2 mt-1 text-repae-blue-400" />
               <span>
-                Polytech Nantes<br>
-                Rue Christian Pauc<br>
-                44300 Nantes
+                01 Bp V 03 Abidjan 01<br>
               </span>
             </li>
           </ul>

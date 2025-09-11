@@ -1,6 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+// Animation states for hero content
+const heroContentVisible = ref(false)
+const titleRef = ref(null)
+const subtitleRef = ref(null)
+
 const stats = ref([
   { value: '+150', label: 'hero.stats.members', numericValue: 150, prefix: '+', suffix: '' },
   { value: '87%', label: 'hero.stats.insertionRate', numericValue: 87, prefix: '', suffix: '%' },
@@ -37,6 +42,11 @@ const animateCounter = (index, targetValue, duration = 2000) => {
 
 // Intersection Observer for triggering animations
 onMounted(() => {
+  // Trigger hero content animations immediately
+  setTimeout(() => {
+    heroContentVisible.value = true
+  }, 100)
+  
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -68,16 +78,29 @@ const formatValue = (stat) => {
 <template>
   <section class="relative min-h-[600px] bg-gradient-to-br from-repae-gray-800 to-repae-gray-900 dark:from-repae-gray-900 dark:to-black">
     <div 
-      class="absolute inset-0 bg-cover bg-center "
+      class="absolute inset-0 bg-cover bg-center hero-background"
       :style="{ backgroundImage: 'url(/image/background/background-image-hero-section.jpg)' }"
     ></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <div class="w-full md:w-6/12 md:ml-auto text-center md:text-left">
-        <h1 class="text-4xl text-shadow-lg text-shadow-repae-blue-500 md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6">
+        <h1 
+          ref="titleRef"
+          :class="[
+            'text-4xl text-shadow-lg text-shadow-repae-blue-500 md:text-5xl lg:text-6xl font-bold text-white font-brand mb-6 transition-all duration-1000 transform',
+            heroContentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          ]"
+        >
           {{ $t('hero.title') }}
         </h1>
-        <p class="text-xl  md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl m-x-auto md:mx-0">
+        <p 
+          ref="subtitleRef"
+          :class="[
+            'text-xl md:text-2xl text-gray-200 font-brand mb-8 max-w-3xl m-x-auto md:mx-0 transition-all duration-1000 transform',
+            heroContentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          ]"
+          :style="{ transitionDelay: '300ms' }"
+        >
           {{ $t('hero.subtitle') }}
         </p>
         
@@ -135,6 +158,34 @@ const formatValue = (stat) => {
 </template>
 
 <style scoped>
+/* Background zoom animation */
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.hero-background {
+  animation: zoomInOut 20s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Parallax effect on scroll */
+.hero-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.2), 
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%);
+  z-index: 1;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
