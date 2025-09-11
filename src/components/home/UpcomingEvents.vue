@@ -93,82 +93,72 @@ const getStatusClasses = (status) => {
         </p>
       </div>
 
-      <!-- Event Cards -->
-      <div class="flex justify-center gap-6 mb-16 overflow-x-auto pb-4">
-        <div 
-          v-for="event in events" 
-          :key="event.id"
-          class="flex-shrink-0 relative group cursor-pointer"
-          :class="event.status === 'completed' ? 'opacity-60' : ''"
-        >
-          <!-- Event Card -->
-          <div class="w-48 h-72 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <div class="relative w-full h-full">
-              <img 
-                :src="event.image" 
-                :alt="$t(event.title)"
-                class="w-full h-full object-cover"
-                :class="event.status === 'completed' ? 'filter brightness-75' : ''"
-              >
-              <!-- Event Content Overlay -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 class="font-brand font-bold text-sm mb-2 leading-tight">
-                    {{ $t(event.title) }}
-                  </h3>
-                  <p class="font-brand text-xs opacity-90 mb-2">
-                    {{ $t(event.description) }}
-                  </p>
-                  <p class="font-brand text-xs opacity-75">
-                    {{ formatDate(event.date) }}
-                  </p>
+      <!-- Events and Timeline Container -->
+      <div class="overflow-x-auto pb-4">
+        <div class="relative flex justify-center gap-6 min-w-max px-4">
+          <div 
+            v-for="event in events" 
+            :key="event.id"
+            class="flex-shrink-0 flex flex-col items-center"
+          >
+            <!-- Event Card -->
+            <div 
+              class="w-48 h-72 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer mb-8"
+              :class="event.status === 'completed' ? 'opacity-60' : ''"
+            >
+              <div class="relative w-full h-full">
+                <img 
+                  :src="event.image" 
+                  :alt="$t(event.title)"
+                  class="w-full h-full object-cover"
+                  :class="event.status === 'completed' ? 'filter brightness-75' : ''"
+                >
+                <!-- Event Content Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 class="font-brand font-bold text-sm mb-2 leading-tight">
+                      {{ $t(event.title) }}
+                    </h3>
+                    <p class="font-brand text-xs opacity-90 mb-2">
+                      {{ $t(event.description) }}
+                    </p>
+                    <p class="font-brand text-xs opacity-75">
+                      {{ formatDate(event.date) }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Timeline -->
-      <div class="relative">
-        <!-- Timeline Container with same spacing as cards -->
-        <div class="flex justify-center gap-6">
-          <div 
-            v-for="event in events" 
-            :key="`timeline-${event.id}`"
-            class="flex-shrink-0 w-48 flex flex-col items-center relative"
-          >
-            <!-- Timeline Line Background (only show on middle events) -->
-            <div v-if="event.id !== 1 && event.id !== events.length" 
-                 class="absolute top-6 left-0 right-0 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600"></div>
-            
-            <!-- Timeline Point -->
-            <div 
-              class="w-12 h-12 rounded-full flex items-center justify-center mb-4 relative z-10 transition-all duration-300"
-              :class="getStatusClasses(event.status)"
-            >
-              <font-awesome-icon 
-                :icon="`fa-solid ${getStatusIcon(event.status)}`"
-                :class="event.status === 'ongoing' ? 'animate-spin' : ''"
-                class="text-sm"
-              />
+            <!-- Timeline Section for this event -->
+            <div class="relative w-48 flex flex-col items-center">
+              <!-- Timeline Point -->
+              <div 
+                class="w-12 h-12 rounded-full flex items-center justify-center mb-4 relative z-10 transition-all duration-300"
+                :class="getStatusClasses(event.status)"
+              >
+                <font-awesome-icon 
+                  :icon="`fa-solid ${getStatusIcon(event.status)}`"
+                  :class="event.status === 'ongoing' ? 'animate-spin' : ''"
+                  class="text-sm"
+                />
+              </div>
+              
+              <!-- Event Title -->
+              <h4 class="font-brand font-semibold text-sm text-repae-gray-900 dark:text-white mb-1 leading-tight text-center">
+                {{ $t(event.title) }}
+              </h4>
+              
+              <!-- Event Date -->
+              <p class="font-brand text-xs text-repae-gray-500 dark:text-repae-gray-400 text-center">
+                {{ formatDate(event.date) }}
+              </p>
             </div>
-            
-            <!-- Event Title -->
-            <h4 class="font-brand font-semibold text-sm text-repae-gray-900 dark:text-white mb-1 leading-tight text-center">
-              {{ $t(event.title) }}
-            </h4>
-            
-            <!-- Event Date -->
-            <p class="font-brand text-xs text-repae-gray-500 dark:text-repae-gray-400 text-center">
-              {{ formatDate(event.date) }}
-            </p>
           </div>
+          
+          <!-- Continuous Timeline Line -->
+          <div class="absolute left-4 right-4 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" style="top: 21.5rem;"></div>
         </div>
-        
-        <!-- Continuous Timeline Line -->
-        <div class="absolute top-6 h-0.5 bg-repae-gray-300 dark:bg-repae-gray-600" 
-             style="left: calc(50% - 33rem); width: 66rem;"></div>
       </div>
     </div>
   </section>
